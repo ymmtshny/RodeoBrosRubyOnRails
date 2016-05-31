@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  get 'brands/index'
+  root 'items#index'
+  
+  get '/items/new', to: 'items#new', as: 'new_item'
+  get '/items/edit', to: 'items#edit', as: 'edit_item'
+  get '/items/delete', to: 'items#delete', as: 'delete_item'
+  
+  get '/brands/new', to: 'brands#new', as: 'new_brand'
+  get '/brands/edit', to: 'brands#edit', as: 'edit_brand'
+  get '/brands/delete', to: 'brands#delete', as: 'delete_brand'
+  
+  
+  # resources :items
+  
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
