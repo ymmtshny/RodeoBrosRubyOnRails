@@ -1,1 +1,31 @@
-new画面
+<h1>ブランド追加</h1>
+
+<div class="brandForm">
+<%= form_for(@brand) do |f| %>
+
+<table>
+<tr>
+<td>日本語名</td>
+<td><%= f.text_field :nameJP %></td>
+</tr>
+<tr>
+<td>英語名</td>
+<td><%= f.text_field :nameEng %></td>
+</tr>
+<tr>
+<td>楽天URL</td>
+<td><%= f.text_field :rakutenURL %></td>
+</tr>
+<tr>
+<td>ヤフーURL</td>
+<td><%= f.text_field :yahooURL %><br></td>
+</tr>
+<tr>
+<td>公式URL</td>
+<td><%= f.text_field :officialURL %><br></td>
+</tr>
+</table>
+
+<%= f.submit id:"submitButton" %>
+<% end %>
+</div>

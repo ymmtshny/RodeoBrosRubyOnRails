@@ -1,0 +1,28 @@
+<h1>ブランド一覧</h1>
+
+<center>
+<%= link_to "ブランドの追加", new_brand_path %><br><br><br>
+</center>
+
+<table class="brandListTable">
+<tr>
+<td>ブランド日本語名</td>
+<td>ブランド英語名</td>
+<td>楽天URL</td>
+<td>ヤフーURL</td>
+<td>公式URL</td>
+<td>edit</td>
+<td>delete</td>
+</tr>
+  <% @brand.each do |brand| %>
+<tr>
+<td><%= brand.nameJP %></td>
+<td><%= brand.nameEng %></td>
+<td><a href="<%= brand.rakutenURL %>"><%= brand.rakutenURL %></a></td>
+<td><a href="<%= brand.yahooURL %>"><%= brand.yahooURL %></a></td>
+<td><a href="<%= brand.yahooURL %>"><%= brand.yahooURL %></a></td>
+<td><%= link_to "編集" , edit_brand_path(brand) %></td>
+<td><%= link_to "削除" , brand , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+</tr>
+<% end %>
+</table>

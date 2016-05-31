@@ -7,8 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="wrapper">
+  
+  <% if notice %>
+      <div class="alert">
+        <%= notice %>
+      </div>
+  <% end %>
+  
+  <%= yield %>
+  
+  <table id="backToHome">
+    <tr><td><%= link_to "ホーム画面に戻る", root_path %></td></tr>
+  </table>
 
-<%= yield %>
-
+</div>
 </body>
 </html>

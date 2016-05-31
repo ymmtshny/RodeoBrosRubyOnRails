@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   get '/items/delete', to: 'items#delete', as: 'delete_item'
   
   get '/brands/new', to: 'brands#new', as: 'new_brand'
-  get '/brands/edit', to: 'brands#edit', as: 'edit_brand'
-  get '/brands/delete', to: 'brands#delete', as: 'delete_brand'
+  # post '/brands/create', to: 'brands#create', as: 'create_brand'
+  # get '/brands/edit', to: 'brands#edit', as: 'edit_brand'
+  # get '/brands/delete', to: 'brands#delete', as: 'delete_brand'
+  get '/brands/show', to: 'brands#show', as: 'show_brand'
   
   
-  # resources :items
+  resources :brands
   
   
   

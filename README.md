@@ -21,3 +21,7 @@ git clean -fd
 
 ディレクトリ構造を確認する
 $ tree
+
+データベース関連
+rails generate model Message name:string body:string
+rake db:migrate

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nameJP: MyString
+  nameEng: MyString
+  rakutenURL: MyString
+  yahooURL: MyString
+  officialURL: MyString
+
+two:
+  nameJP: MyString
+  nameEng: MyString
+  rakutenURL: MyString
+  yahooURL: MyString
+  officialURL: MyString
