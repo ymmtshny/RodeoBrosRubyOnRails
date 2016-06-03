@@ -9,13 +9,17 @@
     text-align:center;
     
     td {
-        padding: 1em 0;
         
         &:hover {
           background:#ddd;  
         }
     }
     
+    a {
+        display:block;
+        padding: 1em 0;
+    }
     
     
+        
 }

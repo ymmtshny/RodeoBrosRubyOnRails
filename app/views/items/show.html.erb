@@ -1,0 +1,31 @@
+<h1>登録商品一覧</h1>
+
+<center>
+<%= link_to "商品の追加", new_item_path %><br><br><br>
+</center>
+
+<table class="brandListTable">
+<tr>
+<td>商品名</td>
+<td>品番</td>
+<td>画像URL共通部分</td>
+<td>ブランド</td>
+<td>カテゴリー</td>
+<td>edit</td>
+<td>delete</td>
+</tr>
+  <% @item.each do |item| %>
+<tr>
+<td><%= item.name %></td>
+<td><%= item.number %></td>
+<td><%= item.imgURLcommonPart %></td>
+<td><% item.brandId
+
+Brand.find_by_id(1).nameJP
+%></td>
+<td><%= item.category %></td>
+<td><%= link_to "編集" , edit_item_path(item) %></td>
+<td><%= link_to "削除" , item , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+</tr>
+<% end %>
+</table>

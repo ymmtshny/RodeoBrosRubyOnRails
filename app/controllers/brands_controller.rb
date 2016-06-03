@@ -10,7 +10,6 @@ class BrandsController < ApplicationController
   
   def show
     @brand = Brand.new
-    # Messageを全て取得する。
     @brand = Brand.all
   end
   

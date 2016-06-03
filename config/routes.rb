@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
+  get 'image/index'
+
+  get 'related/index'
+
+  get 'people/index'
+
   get 'brands/index'
   root 'items#index'
   
   get '/items/new', to: 'items#new', as: 'new_item'
-  get '/items/edit', to: 'items#edit', as: 'edit_item'
-  get '/items/delete', to: 'items#delete', as: 'delete_item'
+  get '/items/show', to: 'items#show', as: 'show_item'
   
   get '/brands/new', to: 'brands#new', as: 'new_brand'
-  # post '/brands/create', to: 'brands#create', as: 'create_brand'
-  # get '/brands/edit', to: 'brands#edit', as: 'edit_brand'
-  # get '/brands/delete', to: 'brands#delete', as: 'delete_brand'
   get '/brands/show', to: 'brands#show', as: 'show_brand'
   
-  
+  resources :items
   resources :brands
   
   
