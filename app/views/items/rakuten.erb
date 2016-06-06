@@ -1,0 +1,37 @@
+<h1>楽天画面</h1>
+
+
+
+<%= @item.name %><br>
+<%= @item.number %><br>
+<%= @item.imgURLcommonPart %><br>
+<%= @item.category %><br>
+<%= @item.description %><br>
+
+<!--楽天URL-->
+<% int = @item.brand_id %>
+<% @brand =  Brand.find(int) %>
+<p>
+    <%= @brand.description %>
+</p>
+<a href="<%= @brand.rakutenURL %>">
+    <%= @brand.nameEng %>(<%= @brand.nameJP %>)
+</a>
+
+<center>
+    <!--画像-->
+    <% number = @item.number %><!--品番-->
+    <% @image = Image.where(item_number: number)%><!--画像インスタンス-->
+    <% @image.each do |image| %>
+      <img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=700x700"><br>
+      <%= image.description %><br>
+    <% end %>
+</center>
+
+
+
+
+
+
+
+

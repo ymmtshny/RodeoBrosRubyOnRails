@@ -25,3 +25,12 @@ $ tree
 データベース関連
 rails generate model Message name:string body:string
 rake db:migrate
+
+データベースの確認方法
+http://qiita.com/noppefoxwolf/items/993505d6c4c9bdef4a12
+
+デーブルの変更方法
+http://www.rubylife.jp/rails/model/index7.html
+
+データベースのデータ参照方法
+http://blog.codebook-10000.com/entry/20140409/1396973387

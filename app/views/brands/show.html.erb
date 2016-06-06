@@ -6,22 +6,26 @@
 
 <table class="brandListTable">
 <tr>
+<td>edit</td>
+<td>ロゴ画像</td>
 <td>ブランド日本語名</td>
 <td>ブランド英語名</td>
 <td>楽天URL</td>
 <td>ヤフーURL</td>
 <td>公式URL</td>
-<td>edit</td>
+<td>説明文</td>
 <td>delete</td>
 </tr>
   <% @brand.each do |brand| %>
 <tr>
+<td><%= link_to "編集" , edit_brand_path(brand) %></td>
+<td><img class="brandLogo" src="<%= brand.imageURL %>"></a></td>
 <td><%= brand.nameJP %></td>
 <td><%= brand.nameEng %></td>
 <td><a href="<%= brand.rakutenURL %>"><%= brand.rakutenURL %></a></td>
 <td><a href="<%= brand.yahooURL %>"><%= brand.yahooURL %></a></td>
 <td><a href="<%= brand.officialURL %>"><%= brand.officialURL %></a></td>
-<td><%= link_to "編集" , edit_brand_path(brand) %></td>
+<td><%= brand.description %></a></td>
 <td><%= link_to "削除" , brand , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
 </tr>
 <% end %>

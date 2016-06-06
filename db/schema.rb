@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603142723) do
+ActiveRecord::Schema.define(version: 20160605121417) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "nameJP"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20160603142723) do
     t.string   "officialURL"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "imageURL"
+    t.text     "description"
   end
 
   create_table "images", force: :cascade do |t|
@@ -28,18 +30,18 @@ ActiveRecord::Schema.define(version: 20160603142723) do
     t.text     "description"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.string   "item_number"
   end
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.string   "number"
     t.string   "imgURLcommonPart"
-    t.integer  "brand_id"
     t.text     "description"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "category"
-    t.integer  "brandId"
+    t.integer  "brand_id"
   end
 
   add_index "items", ["brand_id"], name: "index_items_on_brand_id"

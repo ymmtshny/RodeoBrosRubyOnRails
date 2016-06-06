@@ -16,13 +16,21 @@
 </tr>
   <% @item.each do |item| %>
 <tr>
-<td><%= item.name %></td>
+<td>
+  <%= item.name %><br>
+  <%= link_to "楽天" , rakuten_item_path(item) %>
+  <%= link_to "Yahoo" , yahoo_item_path(item) %>
+  <%= link_to "公式" , official_item_path(item) %>
+  
+  </td>
 <td><%= item.number %></td>
 <td><%= item.imgURLcommonPart %></td>
-<td><% item.brandId
-
-Brand.find_by_id(1).nameJP
-%></td>
+<td>
+    <%= int = item.brand_id %>
+    <% @brand =  Brand.find(int) %>
+    <%= @brand.nameJP %>
+    
+</td>
 <td><%= item.category %></td>
 <td><%= link_to "編集" , edit_item_path(item) %></td>
 <td><%= link_to "削除" , item , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>

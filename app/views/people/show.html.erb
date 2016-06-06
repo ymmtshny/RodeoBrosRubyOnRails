@@ -1,0 +1,28 @@
+<h1>モデルサイズ一覧</h1>
+
+<center>
+<%= link_to "モデルサイズの追加", new_person_path %><br><br><br>
+</center>
+
+<table class="modelListTable">
+<tr>
+<td>モデル名</td>
+<td>身長</td>
+<td>体重</td>
+<td>サイズ</td>
+<td>edit</td>
+<td>delete</td>
+</tr>
+ 
+<% @person.each do |person| %>
+<tr>
+<td><%= person.name %></td>
+<td><%= person.height %></td>
+<td><%= person.weight %></td>
+<td><%= person.size %></td>
+<td><%= link_to "編集" , edit_person_path(person) %></td>
+<td><%= link_to "削除" , person , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+</tr>
+<% end %>
+
+</table>

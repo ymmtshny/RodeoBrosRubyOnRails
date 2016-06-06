@@ -1,0 +1,31 @@
+<h1>モデルサイズを追加</h1>
+
+<div class="inputForm">
+<%= form_for(@person) do |f| %>
+
+<table>
+<tr>
+<td>モデル名</td>
+<td><%= f.text_field :name %></td>
+</tr>
+
+<tr>
+<td>身長</td>
+<td><%= f.text_field :height %></td>
+</tr>
+
+<tr>
+<td>体重</td>
+<td><%= f.text_field :weight %></td>
+</tr>
+
+<tr>
+<td>サイズ</td>
+<td><%= f.text_field :size %></td>
+</tr>
+
+</table>
+
+<%= f.submit id:"submitButton" %>
+<% end %>
+</div>

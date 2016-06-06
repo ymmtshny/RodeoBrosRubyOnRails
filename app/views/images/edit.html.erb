@@ -1,0 +1,25 @@
+<h1>画像編集</h1>
+<div class="inputForm">
+<%= form_for(@image) do |f| %>
+
+<table>
+
+<tr>
+<td>商品番号</td>
+<td><%= f.text_field :item_number %></td>
+</tr>
+<tr>
+<td>画像URL共通部分</td>
+<td><%= f.text_field :imageURLCommonPart %></td>
+</tr>
+<tr>
+<td>説明文</td>
+<td><%= f.text_field :description %></td>
+</tr>
+<tr>
+
+</table>
+
+<%= f.submit id:"submitButton" %>
+<% end %>
+</div>

@@ -1,5 +1,5 @@
 class AddBrandToItems < ActiveRecord::Migration
   def change
-    add_column :items, :brandId, :integer
+    add_reference :items, :brand, index: true, foreign_key: true
   end
 end
