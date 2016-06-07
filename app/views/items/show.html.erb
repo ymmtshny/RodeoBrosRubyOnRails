@@ -9,8 +9,13 @@
 <td>商品名</td>
 <td>品番</td>
 <td>画像URL共通部分</td>
+<td>商品説明文</td>
 <td>ブランド</td>
 <td>カテゴリー</td>
+<td>関連商品</td>
+<td>素材</td>
+<td>生産</td>
+<td>加工</td>
 <td>edit</td>
 <td>delete</td>
 </tr>
@@ -25,6 +30,7 @@
   </td>
 <td><%= item.number %></td>
 <td><%= item.imgURLcommonPart %></td>
+<td><%= item.description %></td>
 <td>
     <%= int = item.brand_id %>
     <% @brand =  Brand.find(int) %>
@@ -32,6 +38,19 @@
     
 </td>
 <td><%= item.category %></td>
+
+
+<td>
+    <% @related = Related.where(parentItemNumber: item.number)%><!--画像インスタンス-->
+    <% @related.each do |related| %>
+      <a href="http://item.rakuten.co.jp/auc-rodeo/<%= related.itemNumber %>/">
+      <%= related.itemName %></a>
+    <% end %>
+</td>
+  
+<td><%= item.material %></td>
+<td><%= item.madein %></td>
+<td><%= item.process %></td>
 <td><%= link_to "編集" , edit_item_path(item) %></td>
 <td><%= link_to "削除" , item , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
 </tr>

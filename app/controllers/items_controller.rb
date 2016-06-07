@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
+    
   end
   
   def create
@@ -33,6 +34,16 @@ class ItemsController < ApplicationController
   end
   
   def edit
+  end
+  
+  def update
+    if @item.update(item_params)
+      # 保存に成功した場合はトップページへリダイレクト
+      redirect_to show_item_path , notice: '商品情報を編集しました'
+    else
+      # 保存に失敗した場合は編集画面へ戻す
+      render 'edit'
+    end
   end
   
   def destroy
@@ -56,7 +67,10 @@ class ItemsController < ApplicationController
                                  :imgURLcommonPart,
                                  :brand_id,
                                  :category,
-                                 :description)
+                                 :description,
+                                 :material,
+                                 :process,
+                                 :madein)
   end
 
 

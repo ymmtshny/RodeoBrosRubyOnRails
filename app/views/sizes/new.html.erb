@@ -1,0 +1,46 @@
+<h1>サイズ追加</h1>
+
+<div class="inputForm">
+<%= form_for(@size) do |f| %>
+
+商品番号　<%= f.text_field :item_number %><br><br>
+
+<table class="sizechart" cellspacing="0" cellpadding="0">
+  <% (1..15).each do |i| %>
+    <tr>
+    <td><input type="text" name="inputData" /></td>
+    <td><input type="text" name="inputData" /></td>
+    <td><input type="text" name="inputData" /></td>
+    <td><input type="text" name="inputData" /></td>
+    <td><input type="text" name="inputData" /></td>
+    <td><input type="text" name="inputData" /></td>
+    <td><input type="text" name="inputData" /></td>
+    <td><input type="text" name="inputData" /></td>
+    <td><input type="text" name="inputData" /></td>
+    <td><input type="text" name="inputData" /></td>
+    </tr>
+  <% end %>
+</table>
+
+<%=f.hidden_field :measurement ,:id=>"measurement" %>
+<button onclick="save()">保存</button>
+<% end %>
+</div>
+
+
+<script type="text/javascript">
+function save() {
+  
+    var array = [];
+    var inputForm = document.getElementsByName("inputData");
+    for(index in inputForm) {
+      console.log(inputForm[index].value); 
+      array.push(inputForm[index].value);
+    }
+    
+    $("#measurement").val(array);
+    
+}
+</script>
+
+

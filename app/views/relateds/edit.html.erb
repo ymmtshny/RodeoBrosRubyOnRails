@@ -1,0 +1,26 @@
+<h1>関連商品編集</h1>
+<div class="inputForm">
+<%= form_for(@related) do |f| %>
+
+<table>
+
+<tr>
+<td>商品名</td>
+<td><%= f.text_field :itemName %></td>
+</tr>
+
+<tr>
+<td>商品番号</td>
+<td><%= f.text_field :itemNumber %></td>
+</tr>
+
+<tr>
+<td>商品番号（親）</td>
+<td><%= f.text_field :parentItemNumber %></td>
+</tr>
+
+</table>
+
+<%= f.submit id:"submitButton" %>
+<% end %>
+</div>

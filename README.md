@@ -34,3 +34,12 @@ http://www.rubylife.jp/rails/model/index7.html
 
 データベースのデータ参照方法
 http://blog.codebook-10000.com/entry/20140409/1396973387
+
+配列データベース参考
+http://stackoverflow.com/questions/8097750/array-attribute-for-ruby-model
+
+serialize :thearray,Array
+マイグレーションまで済。serializeするの忘れた。
+
+巨大なテーブル
+http://techracho.bpsinc.jp/baba/2013_08_12/12693

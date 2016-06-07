@@ -41,7 +41,6 @@ Person.all.each do |data|
   modelString.push(string)
 end
 
-
 %>
 <%= f.select :brand_id, Person.all.map { |p| [p.name, p.id] } %>
 <span class="selectArrow">▼</span>
@@ -53,6 +52,23 @@ end
 <td>商品説明文</td>
 <td><%= f.text_area :description %><br></td>
 </tr>
+
+<tr>
+<td>素材</td>
+<td><%= f.text_field :material %><br></td>
+</tr>
+
+<tr>
+<td>生産国</td>
+<td><%= f.text_field :madein %><br></td>
+</tr>
+
+<tr>
+<td>加工</td>
+<td><%= f.text_field :process %><br></td>
+</tr>
+
+
 </table>
 
 <%= f.submit id:"submitButton" %>

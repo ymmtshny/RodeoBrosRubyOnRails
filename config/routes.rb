@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'relateds/index'
+
   root 'items#index'
   
   get 'images/index'
@@ -23,11 +25,18 @@ Rails.application.routes.draw do
   get '/people/new', to: 'people#new', as: 'new_person'
   get '/people/show', to: 'people#show', as: 'show_person'
   
+  get '/relateds/new', to: 'relateds#new', as: 'new_related'
+  get '/relateds/show', to: 'relateds#show', as: 'show_related'
+  
+  get '/sizes/new', to: 'sizes#new', as: 'new_size'
+  get '/sizes/show', to: 'sizes#show', as: 'show_size'
+  
   resources :items
   resources :brands
   resources :images
   resources :people
-  
+  resources :relateds
+  resources :sizes
   
   
   # The priority is based upon order of creation: first created -> highest priority.

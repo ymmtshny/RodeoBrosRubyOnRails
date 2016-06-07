@@ -1,1 +1,81 @@
-edit画面
+<h1>edit画面</h1>
+
+
+<div class="inputForm">
+<%= form_for(@item) do |f| %>
+
+<table>
+<tr>
+<td>商品名</td>
+<td><%= f.text_field :name %></td>
+</tr>
+<tr>
+<td>品番</td>
+<td><%= f.text_field :number %></td>
+</tr>
+<tr>
+<td>画像URL共通部分</td>
+<td><%= f.text_field :imgURLcommonPart, :placeholder => "　フォルダ名/ファイル名" %></td>
+</tr>
+<tr>
+<td>ブランド</td>
+<td><%= f.collection_select :brand_id, Brand.all, :id, :nameJP %>
+<span class="selectArrow">▼</span></td>
+</tr>
+<tr>
+<td>種類</td>
+<td>
+<%= f.select :category, options_for_select([ "top", "bottom", "outer", "ragran", "shoes", "accessory"]) %>
+<span class="selectArrow">▼</span>
+</td>
+</tr>
+
+<tr>
+<td>モデル</td>
+<td>
+<% 
+
+modelString = []
+
+Person.all.each do |data|
+  string = data.name + ":"+ data.size 
+  modelString.push(string)
+end
+
+
+%>
+<%= f.select :brand_id, Person.all.map { |p| [p.name, p.id] } %>
+<span class="selectArrow">▼</span>
+</td>
+</tr>
+
+
+<tr>
+<td>商品説明文</td>
+<td><%= f.text_area :description %><br></td>
+</tr>
+
+<tr>
+<td>素材</td>
+<td><%= f.text_field :material %><br></td>
+</tr>
+
+<tr>
+<td>生産国</td>
+<td><%= f.text_field :madein %><br></td>
+</tr>
+
+<tr>
+<td>加工</td>
+<td><%= f.text_field :process %><br></td>
+</tr>
+
+</table>
+
+<%= f.submit id:"submitButton" %>
+<% end %>
+</div>
+
+
+
+
