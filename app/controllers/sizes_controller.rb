@@ -38,6 +38,12 @@ class SizesController < ApplicationController
     end
   
 
+    def createSizeTableWith(string)
+        
+        @size.each do size
+           @array = array = size.measurement.split(",")
+        end
+    end
     
     private
     def size_params

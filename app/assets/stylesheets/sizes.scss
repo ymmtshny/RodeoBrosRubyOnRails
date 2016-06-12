@@ -10,3 +10,20 @@
         margin:0!important;
     }
 }
+
+.showSizeTable {
+    border:1px solid #888;
+    text-align: center;
+    width:2000px;
+    
+    .brandLogo {
+        width:100px;
+    }
+}
+
+.showSizeTable td {
+    border:1px solid #888;
+    width: 150px;
+    word-wrap: break-word;
+    padding:1em 0;
+}

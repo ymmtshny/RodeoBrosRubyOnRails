@@ -4,7 +4,7 @@
 <%= link_to "サイズの追加", new_size_path %><br><br><br>
 </center>
 
-<table>
+<table class="showSizeTable">
 <tr>
 <td>商品番号</td>
 <td>サイズ表</td>
@@ -14,9 +14,57 @@
  <% @size.each do |size| %>
 <tr>
 <td><%= size.item_number %></td>
-<td><%= size.measurement %></td>
+<td>
+    <!---->
+    <% array = size.measurement.split(",") %>
+    <% chart = Array.new %>
+    <% row = Array.new %>
+    <% (0..array.length).each do |i| %>
+        <% if i%10 == 0 %>
+            <% row = Array.new %>
+        <% end %>
+        
+        <% if array[i] != "" %>
+            <% row.push(array[i]) %>
+        <% end %>
+        
+        <% if i%10 == 9 %>
+            <% if row.length > 0 %>
+                <% chart.push(row) %>
+            <% end %>
+        <% end %>
+    <% end %>
+    <%# ここからアウトプット %>
+    <% colIndex = 0 %>
+    <% rowIndex = 0 %>
+    <table class="showSizeTable__chart" border="0" width="100%" cellspacing="1" cellpadding="5">
+        <% chart.each do |x| %>
+            <% if colIndex == 0 %>
+                <tr bgcolor="EEEEEE">
+            <% else %>
+                <tr>
+            <% end %>
+                <% x.each do |y| %>
+                    <% if rowIndex == 0 %>
+                        <td bgcolor="EEEEEE">
+                    <% else %>
+                        <td>
+                    <% end %>
+                        <%= y %>
+                    </td>
+                <% end %>
+            </tr>
+            <% colIndex += 1  %>
+            <% rowIndex += 1  %>
+        <% end %>
+    </table>
+    <!---->   
+</td>
+
 <td><%= link_to "編集" , edit_size_path(size) %></td>
 <td><%= link_to "削除" , size , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
 </tr>
-<% end %>
 </table>
+
+<% end %>
+
