@@ -11,9 +11,16 @@
 <td>ブランド日本語名</td>
 <td>ブランド英語名</td>
 <td>楽天URL</td>
+<td>楽天2ndURL</td>
 <td>ヤフーURL</td>
 <td>公式URL</td>
 <td>説明文</td>
+<td>楽天カテゴリーHTML</td>
+<td>楽天2ndカテゴリーHTML</td>
+<td>YahooカテゴリーHTML</td>
+<td>YahooスマフォカテゴリーHTML</td>
+<td>公式カテゴリーHTML</td>
+
 <td>delete</td>
 </tr>
   <% @brand.each do |brand| %>
@@ -23,9 +30,15 @@
 <td><%= brand.nameJP %></td>
 <td><%= brand.nameEng %></td>
 <td><a href="<%= brand.rakutenURL %>"><%= brand.rakutenURL %></a></td>
+<td><a href="<%= brand.rakutenURL %>"><%= brand.rakuten2ndURL %></a></td>
 <td><a href="<%= brand.yahooURL %>"><%= brand.yahooURL %></a></td>
 <td><a href="<%= brand.officialURL %>"><%= brand.officialURL %></a></td>
 <td><%= brand.description %></a></td>
+<td><%= brand.categoryRakutenHTML %></a></td>
+<td><%= brand.categoryRakuten2ndHTML %></a></td>
+<td><%= brand.categoryYahooHTML %></a></td>
+<td><%= brand.categoryYahooSPHTML %></a></td>
+<td><%= brand.categoryOfficialHTML %></a></td>
 <td><%= link_to "削除" , brand , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
 </tr>
 <% end %>

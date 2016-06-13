@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607131145) do
+ActiveRecord::Schema.define(version: 20160613095453) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "nameJP"
@@ -19,10 +19,16 @@ ActiveRecord::Schema.define(version: 20160607131145) do
     t.string   "rakutenURL"
     t.string   "yahooURL"
     t.string   "officialURL"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "imageURL"
     t.text     "description"
+    t.string   "rakuten2ndURL"
+    t.text     "categoryRakutenHTML"
+    t.text     "categoryRakuten2ndHTML"
+    t.text     "categoryYahooHTML"
+    t.text     "categoryYahooSPHTML"
+    t.text     "categoryOfficialHTML"
   end
 
   create_table "images", force: :cascade do |t|

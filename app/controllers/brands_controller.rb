@@ -50,7 +50,21 @@ class BrandsController < ApplicationController
   
   private
   def brand_params
-    params.require(:brand).permit(:id,:nameEng, :nameJP, :rakutenURL, :yahooURL, :officialURL, :imageURL, :description)
+    params.require(:brand).permit(:id,
+    :nameEng, 
+    :nameJP, 
+    :rakutenURL,
+    :rakuten2ndURL,
+    :yahooURL,
+    :officialURL, 
+    :imageURL, 
+    :description,
+    :categoryRakutenHTML,
+    :categoryRakuten2ndHTML,
+    :categoryYahooHTML,
+    :categoryYahooSPHTML,
+    :categoryOfficialHTML
+    )
   end
   
 end

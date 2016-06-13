@@ -17,6 +17,10 @@
 <td><%= f.text_field :rakutenURL %></td>
 </tr>
 <tr>
+<td>楽天2ndURL</td>
+<td><%= f.text_field :rakuten2ndURL %></td>
+</tr>
+<tr>
 <td>ヤフーURL</td>
 <td><%= f.text_field :yahooURL %><br></td>
 </tr>
@@ -33,6 +37,25 @@
 <td><%= f.text_area :description %><br></td>
 </tr>
 
+<td>カテゴリー説明文（楽天）</td>
+<td><%= f.text_area :categoryRakutenHTML %><br></td>
+</tr>
+
+<td>カテゴリー説明文（楽天2nd）</td>
+<td><%= f.text_area :categoryRakuten2ndHTML %><br></td>
+</tr>
+
+<td>カテゴリー説明文（Yahoo）</td>
+<td><%= f.text_area :categoryYahooHTML %><br></td>
+</tr>
+
+<td>カテゴリー説明文（YahooSP）</td>
+<td><%= f.text_area :categoryYahooSPHTML %><br></td>
+</tr>
+
+<td>カテゴリー説明文（公式）</td>
+<td><%= f.text_area :categoryOfficialHTML %><br></td>
+</tr>
 </table>
 
 <%= f.submit id:"submitButton" %>
