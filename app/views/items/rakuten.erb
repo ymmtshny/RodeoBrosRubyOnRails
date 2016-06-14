@@ -30,8 +30,169 @@
     <%= @brand.nameEng %> <%= @brand.nameJP %> <%= @item.name %> <%= @item.number %>
 </textarea><br>
 <!------------------------------------------------------------------------------>
-<h3>PC用商品説明文</h3>
-<h3>PC用販売説明文</h3>
+<h3>PC用説明文(上)</h3>
+<textarea rows="25" cols="160">
+<iframe id="rodeoh" src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/<%=@item.number%>.html" width="850" height="850" scrolling="no" frameborder="0" style="border:none; display:block; margin:0;"></iframe>
+<%#####ここから同一#######%>
+<div id="shouhin">
+<h1><%= @item.name %></h1>
+<p><%= @item.description %></p>
+</div>
+<div id="shouhin_main">
+	<div id="shouhin_main_left">
+		<!--//ブランド //-->
+		<p id="m-brand">BRAND</p>
+		<p>
+			<a href="<%= @brand.rakutenURL %>" target="_top"><%= @brand.nameEng %> (<%= @brand.nameJP %>)</a>
+		</p>
+		<!--//詳細 //-->
+		<p id="m-detail">DETAIL</p>
+		<p><%= @item.detail %></p>
+		<!--//モデル//-->
+		<p id="m-model">MODEL</p>
+		<div class="size_person">
+			<img src="http://www.rakuten.ne.jp/gold/auc-rodeo/staff_img/staff02.png">
+			モデル: <%= @person.name %>
+			<br>身長: <%= @person.height %>cm
+			<br>体重: <%= @person.weight %>kg
+			<br>サイズ: <%= @person.size %>
+		</div>
+		<!--//関連 //-->
+		<div id="clear">
+			<p id="m-total">TOTAL</p>モデル着用商品<br>
+			<% @related.each do |related| %>
+                <a href="http://item.rakuten.co.jp/auc-rodeo/<%= related.itemNumber %>/"><%= related.itemName %></a><br><br>
+            <% end %>
+		</div>
+	</div>
+	<br>
+	<!--//商品説明「右」ここから //-->
+	<div id="shouhin_main_right">
+		<!--//サイズ表//-->
+		<p id="m-size">SIZE</p>
+        <% colIndex = 0 %><% rowIndex = 0 %><table border="0" width="100%" cellspacing="1" cellpadding="5"><% chart.each do |row| %><% if rowIndex == 0 %><tr bgcolor="EEEEEE"align="center"><% else %><tr align="center"><% end %><% row.each do |col| %><% if colIndex == 0 %><td bgcolor="EEEEEE" width="1%"><% else %><td width="1%"><% end %><%= col %></td><% colIndex += 1  %><% end %></tr><% rowIndex += 1  %><% colIndex = 0  %><% end %></table>
+		<p>サイズは若干前後します。
+			<a href="http://www.rakuten.ne.jp/gold/auc-rodeo/size-chart-all.html" target="_blank">サイズの測り方</a>
+		</p>
+		<!--//素材生産加工など//-->
+		<p id="m-mate">MATERIAL</p>
+		<table border="0" width="435" cellspacing="1" cellpadding="5" bgcolor="C0C0C0" style="height: 60px; border-collapse: separate;">
+			<tbody>
+				<tr bgcolor="ffffff">
+					<td align="center" bgcolor="EEEEEE" width="20%">素材</td>
+					<td><%= @item.material %></td>
+				</tr>
+				<tr bgcolor="ffffff">
+					<td align="center" bgcolor="EEEEEE" width="20%">生産</td>
+					<td><%= @item.madein %></td>
+				</tr>
+				<tr bgcolor="ffffff">
+					<td align="center" bgcolor="EEEEEE" width="20%">加工</td>
+					<td><%= @item.process %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="shouhin_main_bottom">
+		<div id="more">
+			<a href="<%= @brand.rakutenURL %>" target="_top">
+				<div><%= @brand.nameEng %> (<%= @brand.nameJP %>) 商品一覧へ </div>
+			</a>
+		</div>
+	    <%#####ここまで同一#######%>
+	</div>
+</div>
+</textarea>
+<!------------------------------------------------------------------------------>
+<h3>PC用説明文（下）</h3>
+<textarea rows="25" cols="160">
+<% numberOfImage = 0 %>
+<% @image.each do |image| %>
+    <% if numberOfImage < 10 %>
+    <img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=700x700"><br><%= image.description %><br><br><br>
+    <% end %>
+    <% numberOfImage += 1 %>
+<% end %>
+
+<%#####ここから同一#######%>
+<div id="shouhin">
+<h1><%= @item.name %></h1>
+<p><%= @item.description %></p>
+</div>
+<div id="shouhin_main">
+	<div id="shouhin_main_left">
+		<!--//ブランド //-->
+		<p id="m-brand">BRAND</p>
+		<p>
+			<a href="<%= @brand.rakutenURL %>" target="_top"><%= @brand.nameEng %> (<%= @brand.nameJP %>)</a>
+		</p>
+		<!--//詳細 //-->
+		<p id="m-detail">DETAIL</p>
+		<p><%= @item.detail %></p>
+		<!--//モデル//-->
+		<p id="m-model">MODEL</p>
+		<div class="size_person">
+			<img src="http://www.rakuten.ne.jp/gold/auc-rodeo/staff_img/staff02.png">
+			モデル: <%= @person.name %>
+			<br>身長: <%= @person.height %>cm
+			<br>体重: <%= @person.weight %>kg
+			<br>サイズ: <%= @person.size %>
+		</div>
+		<!--//関連 //-->
+		<div id="clear">
+			<p id="m-total">TOTAL</p>モデル着用商品<br>
+			<% @related.each do |related| %>
+                <a href="http://item.rakuten.co.jp/auc-rodeo/<%= related.itemNumber %>/"><%= related.itemName %></a><br><br>
+            <% end %>
+		</div>
+	</div>
+	<br>
+	<!--//商品説明「右」ここから //-->
+	<div id="shouhin_main_right">
+		<!--//サイズ表//-->
+		<p id="m-size">SIZE</p>
+        <% colIndex = 0 %><% rowIndex = 0 %><table border="0" width="100%" cellspacing="1" cellpadding="5"><% chart.each do |row| %><% if rowIndex == 0 %><tr bgcolor="EEEEEE"align="center"><% else %><tr align="center"><% end %><% row.each do |col| %><% if colIndex == 0 %><td bgcolor="EEEEEE" width="1%"><% else %><td width="1%"><% end %><%= col %></td><% colIndex += 1  %><% end %></tr><% rowIndex += 1  %><% colIndex = 0  %><% end %></table>
+		<p>サイズは若干前後します。
+			<a href="http://www.rakuten.ne.jp/gold/auc-rodeo/size-chart-all.html" target="_blank">サイズの測り方</a>
+		</p>
+		<!--//素材生産加工など//-->
+		<p id="m-mate">MATERIAL</p>
+		<table border="0" width="435" cellspacing="1" cellpadding="5" bgcolor="C0C0C0" style="height: 60px; border-collapse: separate;">
+			<tbody>
+				<tr bgcolor="ffffff">
+					<td align="center" bgcolor="EEEEEE" width="20%">素材</td>
+					<td><%= @item.material %></td>
+				</tr>
+				<tr bgcolor="ffffff">
+					<td align="center" bgcolor="EEEEEE" width="20%">生産</td>
+					<td><%= @item.madein %></td>
+				</tr>
+				<tr bgcolor="ffffff">
+					<td align="center" bgcolor="EEEEEE" width="20%">加工</td>
+					<td><%= @item.process %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="shouhin_main_bottom">
+		<div id="more">
+			<a href="<%= @brand.rakutenURL %>" target="_top">
+				<div><%= @brand.nameEng %> (<%= @brand.nameJP %>) 商品一覧へ </div>
+			</a>
+		</div>
+	    <%#####ここまで同一#######%>
+		<!--ブランドコンセプトここから-->
+		<div id="more">
+			<a href="#rodeoh">
+				<div>ページ上に戻る </div>
+			</a>
+		</div>
+		<br>
+		<br>
+	</div>
+</div>
+</textarea>
+<!------------------------------------------------------------------------------>
 <h3>モバイル用商品説明文</h3>
 <textarea rows="25" cols="160">
 送料無料 ＋ 土日祝日も営業<br><br>
@@ -98,7 +259,7 @@
 </textarea><br>
 <!------------------------------------------------------------------------------>
 <h3>楽天インラインフレーム</h3>
-<textarea rows="50" cols="160">
+<textarea rows="25" cols="160">
 <!--ここからだよーーーーー-->
 <!DOCTYPE html>
 <html lang="ja">
