@@ -96,7 +96,8 @@ class ItemsController < ApplicationController
                                  :process,
                                  :madein,
                                  :model_id,
-                                 :imgURLcommonPart)
+                                 :imgURLcommonPart,
+                                 :detail)
   end
 
 

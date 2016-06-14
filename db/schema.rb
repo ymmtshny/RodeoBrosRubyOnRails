@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614024853) do
+ActiveRecord::Schema.define(version: 20160614071730) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "nameJP"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160614024853) do
     t.string   "madein"
     t.string   "process"
     t.integer  "model_id"
+    t.text     "detail"
   end
 
   add_index "items", ["brand_id"], name: "index_items_on_brand_id"
