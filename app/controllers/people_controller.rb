@@ -35,11 +35,10 @@ class PeopleController < ApplicationController
   
   
   def set_person
-    @item = Person.find(params[:id])
+    @person = Person.find(params[:id])
   end
   
   def destroy
-    
      @person.destroy
      redirect_to show_person_path, notice: 'モデルサイズを削除しました'
   end

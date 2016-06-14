@@ -12,8 +12,11 @@ Rails.application.routes.draw do
   get '/items/new', to: 'items#new', as: 'new_item'
   get '/items/show', to: 'items#show', as: 'show_item'
   get '/items/rakuten/:id', to: 'items#rakuten', as: 'rakuten_item'
+  get '/items/rakutenIframe/:id', to: 'items#rakutenIframe', as: 'rakutenIframe_item'
   get '/items/yahoo/:id', to: 'items#yahoo', as: 'yahoo_item'
+  get '/items/yahooIframe/:id', to: 'items#yahooIframe', as: 'yahooIframe_item'
   get '/items/official/:id', to: 'items#official', as: 'official_item'
+  get '/items/officialIframe/:id', to: 'items#officialIframe', as: 'officialIframe_item'
   
   
   get '/brands/new', to: 'brands#new', as: 'new_brand'

@@ -2,18 +2,39 @@ class ItemsController < ApplicationController
   
   before_action :set_item, only: [:edit, :update, :destroy]
   before_action :set_brand
+  before_action :set_person
+  before_action :find_item, only: [:rakuten, 
+                                   :rakutenIframe,
+                                   :yahoo,
+                                   :yahooIframe,
+                                   :official,
+                                   :officialIframe
+                                   ]
   
   def index
   end
   
-  def rakuten
+  def find_item
     @item = Item.find(params[:id])
+  end
+
+  
+  def rakuten
+  end
+  
+  def rakutenIframe
   end
 
   def yahoo
   end
+  
+  def yahooIframe
+  end
 
   def official
+  end
+  
+  def officialIframe
   end
   
   def show
@@ -55,6 +76,10 @@ class ItemsController < ApplicationController
     @brand = Brand.all
   end
   
+  def set_person
+    @person = Person.all
+  end
+  
   def set_item
     @item = Item.find(params[:id])
   end
@@ -64,13 +89,14 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:id,
                                  :name,
                                  :number,
-                                 :imgURLcommonPart,
                                  :brand_id,
                                  :category,
                                  :description,
                                  :material,
                                  :process,
-                                 :madein)
+                                 :madein,
+                                 :model_id,
+                                 :imgURLcommonPart)
   end
 
 

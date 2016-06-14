@@ -1,40 +1,58 @@
 <h1>楽天画面</h1>
 
+<% number = @item.number %>
+<% @image = Image.where(item_number: number)%>
+<% @brand =  Brand.find(@item.brand_id) %>
+<% model_id = @item.model_id %>
+<% @person =  Person.find(model_id) %>
+<% @related = Related.where(parentItemNumber: number)%>
 
-
-<!--楽天URL-->
-<% int = @item.brand_id %>
-<% @brand =  Brand.find(int) %>
-<p><%= @brand.description %></p>
-
-
+<div class="rakutenSP">
+<!--ここからだよーーーーー-->
 <center>
-    <!--画像-->
-    <% number = @item.number %><!--品番-->
-    <% @image = Image.where(item_number: number)%><!--画像インスタンス-->
-    <% @image.each do |image| %>
-      <img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=700x700"><br>
-      <%= image.description %><br>
-    <% end %>
-    
-    <hr>
-    
-    <%= @item.name %><br>
-    <%= @item.number %><br>
-    <%= @item.imgURLcommonPart %><br>
-    <%= @item.category %><br>
-    <%= @item.description %><br>
-    <a href="<%= @brand.rakutenURL %>"><%= @brand.nameEng %>(<%= @brand.nameJP %>)</a><br>
-    <!--関連商品-->
-    <td>
-    <% @related = Related.where(parentItemNumber: number)%><!--画像インスタンス-->
-    <% @related.each do |related| %>
-      <a href="http://item.rakuten.co.jp/auc-rodeo/<%= related.itemNumber %>/">
-      <%= related.itemName %></a>
-    <% end %>
-    </td>
+送料無料 ＋ 土日祝日も営業<br><br>
+15:00 までのご注文は 即日発送<br><br>
+<% @image.each do |image| %>
+<img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=700x700"><br><%= image.description %><br><br><br>
+<% end %>
 </center>
+<%######################%>
+<hr><br><br>
+<h1><%= @item.name %></h1><br><br>
+<%= @item.description %><br>
+<%######################%>
+<h3 bgcolor="#000000"><span color="#FFFFFF">■BRAND</h3>
+<a href="<%= @brand.rakutenURL %>"><%= @brand.nameEng %>(<%= @brand.nameJP %>)</a>
+<%######################%>
+<h3 bgcolor="#000000"><span color="#FFFFFF">■DETAIL</span></h3>
+<%######################%>
+<h3 bgcolor="#000000"><span color="#FFFFFF">■MODEL</span></h3>
+<%= @person.name %>/<%= @person.height %>cm/<%= @person.weight %>kg サイズ: <%= @person.size %>
+<%######################%>
+<h3 bgcolor="#000000"><span color="#FFFFFF">■TOTAL</span></h3>
+モデル着用商品<br><br>
+<% @related.each do |related| %>
+    ・<a href="http://item.rakuten.co.jp/auc-rodeo/<%= related.itemNumber %>/"><%= related.itemName %></a><br><br>
+<% end %>
+<%######################%>
+<h3 bgcolor="#000000"><span color="#FFFFFF">■MATERIAL</span></h3>
+<table border="0" width="100%" cellspacing="1" cellpadding="5" bgcolor="C0C0C0">
+<tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">素材</td>
+<td><%= @item.material %></td></tr>
+<tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">生産</td>
+<td><%= @item.madein %></td></tr>
+<tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">加工</td>
+<td><%= @item.process %></td></tr>
+</table>
+<%######################%>
+<h3 bgcolor="#000000"><span color="#FFFFFF">■SIZE</span></h3>
+<% @size = Size.where(item_number: number) %><% @size.each do |size| %> <% array = size.measurement.split(",") %> <% chart = Array.new %> <% row = Array.new %> <% (0..array.length).each do |i| %> <% if i%10 == 0 %> <% row = Array.new %> <% end %> <% if array[i] != "" %> <% row.push(array[i]) %> <% end %> <% if i%10 == 9 %> <% if row.length > 0 %> <% chart.push(row) %> <% end %> <% end %> <% end %> <%# ここからアウトプット %> <% colIndex = 0 %> <% rowIndex = 0 %> <table border="0" width="100%" cellspacing="1" cellpadding="5"> <% chart.each do |x| %> <% if colIndex == 0 %> <tr bgcolor="EEEEEE"> <% else %> <tr> <% end %> <% x.each do |y| %> <% if rowIndex == 0 %> <td bgcolor="EEEEEE"> <% else %> <td> <% end %> <%= y %> </td> <% end %> </tr> <% colIndex += 1  %> <% rowIndex += 1  %> <% end %> </table> <% end %>
+<br>サイズは若干前後します。<a href="http://www.rakuten.ne.jp/gold/auc-rodeo/size-chart-all.html" target="_blank">サイズの測り方</a> </td>
 
+<!--ここまでだよーーーー-->
+</div>
+
+     
 
 
 

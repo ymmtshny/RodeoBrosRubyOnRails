@@ -47,6 +47,7 @@ class RelatedsController < ApplicationController
     params.require(:related).permit(:id,
                                  :itemName,
                                  :itemNumber,
-                                 :parentItemNumber)
+                                 :parentItemNumber,
+                                 :imageURLCommonPart)
   end
 end

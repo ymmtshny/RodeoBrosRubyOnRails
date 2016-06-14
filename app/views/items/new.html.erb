@@ -13,8 +13,8 @@
 <td><%= f.text_field :number %></td>
 </tr>
 <tr>
-<td>画像URL共通部分</td>
-<td><%= f.text_field :imgURLcommonPart, :placeholder => "　フォルダ名/ファイル名" %></td>
+<td>ゼロ番画像</td>
+<td><%= f.text_field :imgURLcommonPart %></td>
 </tr>
 <tr>
 <td>ブランド</td>
@@ -31,19 +31,7 @@
 
 <tr>
 <td>モデル</td>
-<td>
-<% 
-
-modelString = []
-
-Person.all.each do |data|
-  string = data.name + ":"+ data.size 
-  modelString.push(string)
-end
-
-%>
-<%= f.select :brand_id, Person.all.map { |p| [p.name, p.id] } %>
-<span class="selectArrow">▼</span>
+<td><%= f.collection_select :model_id, Person.all, :id, :size %><span class="selectArrow">▼</span>
 </td>
 </tr>
 
