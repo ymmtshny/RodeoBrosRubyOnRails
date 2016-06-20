@@ -17,7 +17,7 @@
 <td><%= image.item_number %></td>
 
 <% if index < 20 %>
-<td><img src="http://image.rakuten.co.jp/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>"></td>
+<td><img src="http://image.rakuten.co.jp/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>"><br><%= image.imageURLCommonPart %></td>
 <% else %>
 <td><a href="http://image.rakuten.co.jp/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>"><%= image.imageURLCommonPart %></a></td>
 <% end %>
