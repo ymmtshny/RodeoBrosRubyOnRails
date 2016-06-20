@@ -243,36 +243,47 @@
 </center>
 <hr><br><br>
 <%######################%>
-<b><%= @item.name %></b><br><br>
-<%= @item.description %><br>
-<%######################%>
-<h3 bgcolor="#000000"><span color="#FFFFFF">■BRAND</h3>
-<a href="<%= @brand.rakutenURL %>"><%= @brand.nameEng %>(<%= @brand.nameJP %>)</a>
-<%######################%>
-<h3 bgcolor="#000000"><span color="#FFFFFF">■DETAIL</span></h3>
-<%= @item.detail %>
-<% unless @person.size =="" %><h3 bgcolor="#000000"><span color="#FFFFFF">■MODEL</span></h3>
-<%= @person.name %>/<%= @person.height %>cm/<%= @person.weight %>kg サイズ: <%= @person.size %><% end %>
-<%######################%>
-<h3 bgcolor="#000000"><span color="#FFFFFF">■TOTAL</span></h3>
-モデル着用商品<br><br>
-<% @related.each do |related| %>
-    ・<a href="http://item.rakuten.co.jp/auc-rodeo/<%= related.itemNumber %>/"><%= related.itemName %></a><br><br>
-<% end %>
-<%######################%>
-<h3 bgcolor="#000000"><span color="#FFFFFF">■MATERIAL</span></h3>
-<table border="0" width="100%" cellspacing="1" cellpadding="5" bgcolor="C0C0C0">
-<% unless @item.material =="" %><tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">素材</td>
-<td><%= @item.material %></td></tr>><% end %>
-<% unless @item.madein =="" %><tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">生産</td>
-<td><%= @item.madein %></td></tr><% end %>
-<% unless @item.process =="" %><tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">加工</td>
-<td><%= @item.process %></td></tr><% end %>
+<table>
+	<tr><td><b><%= @item.name %></b></td></tr>
+	<tr><td><%= @item.description %><br></td></tr>
+	<%######################%>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■BRAND</font></td></tr>
+	<tr><td><a href="<%= @brand.rakutenURL %>"><%= @brand.nameEng %>(<%= @brand.nameJP %>)</a></td></tr>
+	<%######################%>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■DETAIL</font></td></tr>
+	<tr><td><%= @item.detail %></td></tr>
+	<%######################%>
+	<% unless @person.size =="" %>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■MODEL</font></td></tr>
+	<tr><td><%= @person.name %>/<%= @person.height %>cm/<%= @person.weight %>kg サイズ: <%= @person.size %></td></tr>
+	<% end %>
+	<%######################%>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■TOTAL</font></td></tr>
+	<tr><td>モデル着用商品<br><br></td></tr>	
+	<tr><td>
+		<% @related.each do |related| %>
+    	・<a href="http://item.rakuten.co.jp/auc-rodeo/<%= related.itemNumber %>/"><%= related.itemName %></a><br><br>
+		<% end %>
+	</td></tr>
+	<%######################%>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■MATERIAL</font></td></tr>
+	<tr><td>
+		<table border="0" width="100%" cellspacing="1" cellpadding="5" bgcolor="C0C0C0">
+		<% unless @item.material =="" %><tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">素材</td>
+		<td><%= @item.material %></td></tr><% end %>
+		<% unless @item.madein =="" %><tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">生産</td>
+		<td><%= @item.madein %></td></tr><% end %>
+		<% unless @item.process =="" %><tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">加工</td>
+		<td><%= @item.process %></td></tr><% end %>
+		</table>
+	</td></tr>
+	<%######################%>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■SIZE</font></td></tr>
+	<tr><td>
+		<% colIndex = 0 %><% rowIndex = 0 %><table border="0" width="100%" cellspacing="1" cellpadding="5" bgcolor="C0C0C0"><% chart.each do |row| %><% if rowIndex == 0 %><tr bgcolor="EEEEEE"align="center"><% else %><tr align="center" bgcolor="ffffff"><% end %><% row.each do |col| %><% if colIndex == 0 %><td bgcolor="EEEEEE" width="1%"><% else %><td width="1%"><% end %><%= col %></td><% colIndex += 1  %><% end %></tr><% rowIndex += 1  %><% colIndex = 0  %><% end %></table> <% end %>
+		<br>サイズは若干前後します。<a href="http://www.rakuten.ne.jp/gold/auc-rodeo/size-chart-all.html" target="_blank">サイズの測り方</a> 
+	</td></tr>
 </table>
-<%######################%>
-<h3 bgcolor="#000000"><span color="#FFFFFF">■SIZE</span></h3>
-<% colIndex = 0 %><% rowIndex = 0 %><table border="0" width="100%" cellspacing="1" cellpadding="5" bgcolor="C0C0C0" style="border-collapse: separate;"><% chart.each do |row| %><% if rowIndex == 0 %><tr bgcolor="EEEEEE"align="center"><% else %><tr align="center" bgcolor="ffffff">bgcolor="ffffff"><% end %><% row.each do |col| %><% if colIndex == 0 %><td bgcolor="EEEEEE" width="1%"><% else %><td width="1%"><% end %><%= col %></td><% colIndex += 1  %><% end %></tr><% rowIndex += 1  %><% colIndex = 0  %><% end %></table> <% end %>
-<br>サイズは若干前後します。<a href="http://www.rakuten.ne.jp/gold/auc-rodeo/size-chart-all.html" target="_blank">サイズの測り方</a> </td>
 </textarea><br>
 <!------------------------------------------------------------------------------>
 <h3>楽天インラインフレーム</h3>
