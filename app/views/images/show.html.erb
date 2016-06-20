@@ -1,9 +1,8 @@
 <h1>画像一覧</h1>
-
 <center>
 <%= link_to "画像の追加", new_image_path %><br><br><br>
 </center>
-
+<p>※画像２０枚まで表示します。</p>
 <table class="imageListTable">
 <tr>
 <td>商品番号</td>
@@ -12,13 +11,21 @@
 <td>edit</td>
 <td>delete</td>
 </tr>
- <% @image.each do |image| %>
+<% index = 0 %>
+<% @image.each do |image| %>
 <tr>
 <td><%= image.item_number %></td>
+
+<% if index < 20 %>
 <td><img src="http://image.rakuten.co.jp/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>"></td>
+<% else %>
+<td><a href="http://image.rakuten.co.jp/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>"><%= image.imageURLCommonPart %></a></td>
+<% end %>
+
 <td><%= image.description %></td>
 <td><%= link_to "編集" , edit_image_path(image) %></td>
 <td><%= link_to "削除" , image , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
 </tr>
+<% index += 1 %>
 <% end %>
 </table>

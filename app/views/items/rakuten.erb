@@ -26,12 +26,12 @@
 <h1>楽天画面</h1>
 <!------------------------------------------------------------------------------>
 <h3>楽天商品名</h3>
-<textarea rows="3" cols="160">
+<textarea rows="3" cols="160" id="rakutenItemNameTextArea">
 <%= @brand.nameEng %> <%= @brand.nameJP %> <%= @item.name %> <%= @item.number %>
 </textarea><br>
 <!------------------------------------------------------------------------------>
 <h3>PC用販売説明文</h3>
-<textarea rows="25" cols="160">
+<textarea rows="25" cols="160" id="rakutePCSellExplanationTextArea">
 <iframe id="rodeoh" src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/<%=@item.number%>.html" width="850" height="850" scrolling="no" frameborder="0" style="border:none; display:block; margin:0;"></iframe>
 <%#####ここから同一#######%>
 <div id="shouhin">
@@ -121,7 +121,7 @@
 </textarea>
 <!------------------------------------------------------------------------------>
 <h3>PC用商品説明文</h3>
-<textarea rows="25" cols="160">
+<textarea rows="25" cols="160" id="rakutePCItemExplanationTextArea">
 <center>
 <% numberOfImage = 0 %>
 <% @image.each do |image| %>
@@ -211,7 +211,7 @@
 </textarea>
 <!------------------------------------------------------------------------------>
 <h3>モバイル用商品説明文</h3>
-<textarea rows="25" cols="160">
+<textarea rows="25" cols="160" id="rakuteMobileExplanationTextArea">
 送料無料 ＋ 土日祝日も営業<br><br>
 15:00 までのご注文は 即日発送<br><br>
 <%= @item.name %><br><br>
@@ -228,7 +228,7 @@
 </textarea><br>
 <!------------------------------------------------------------------------------>
 <h3>スマートフォン用商品説明文</h3>
-<textarea rows="25" cols="160">
+<textarea rows="25" cols="160" id="rakuteSPExplanationTextArea">
 <center>
 送料無料 ＋ 土日祝日も営業<br><br>
 15:00 までのご注文は 即日発送<br><br>
@@ -327,6 +327,41 @@
 
 
 
-
+<script>
+	
+	let max_rakutenItemNameTextArea_length = 127;
+	let max_rakutenPCItemExplanationTextArea_length = 5120;
+	let max_rakutenPCSellExplanationTextArea_length = 5120;
+	let max_rakutenSPExplanationTextArea_length = 5120;
+	let max_rakutenMobileExplanationTextArea_length = 512;
+	
+  	let rakutenItemNameTextArea_Length = $("#rakutenItemNameTextArea").length;
+  	let rakutePCSellExplanationTextArea_Lenght = $("rakutePCSellExplanationTextArea").length;
+  	let rakutePCItemExplanationTextArea_Lenght = $("rakutePCItemExplanationTextArea").length;
+  	let rakuteSPExplanationTextArea_Lenght = $("rakuteSPExplanationTextArea").length;
+  	let rakuteMobileExplanationTextArea_Lenght = $("rakuteMobileExplanationTextArea").length;
+  	
+  	if(rakutenItemNameTextArea_Length > max_rakutenItemNameTextArea_length) {
+  		$("#rakutenItemNameTextArea").css("border", "2px solid red");
+  	}
+  	
+  	if(max_rakutenPCItemExplanationTextArea_length > rakutePCSellExplanationTextArea_Lenght) {
+  		$("#rakutePCSellExplanationTextArea").css("border", "2px solid red");
+  	}
+  	
+  	if(max_rakutenPCSellExplanationTextArea_length > rakutePCItemExplanationTextArea_Lenght) {
+  		$("rakutePCItemExplanationTextArea").css("border", "2px solid red");
+  	}
+  	
+  	if(max_rakutenSPExplanationTextArea_length > rakuteSPExplanationTextArea_Lenght) {
+  		$("rakuteSPExplanationTextArea").css("border", "2px solid red");
+  	}
+  	
+  	if(max_rakutenMobileExplanationTextArea_length > rakuteMobileExplanationTextArea_Lenght) {
+  		$("rakuteMobileExplanationTextArea").css("border", "2px solid red");
+  	}
+  	
+	
+</script>
 
 
