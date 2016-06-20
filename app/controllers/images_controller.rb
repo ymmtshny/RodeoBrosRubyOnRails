@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
   
   def show
     @image = Image.new
-    @image = Image.all
+    @image = Image.all.reverse
   end
   
   def new

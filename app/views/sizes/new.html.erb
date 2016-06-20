@@ -1,9 +1,22 @@
 <h1>サイズ追加</h1>
 
+<table class="inputTable">
+<tr align="center">
+<td><input type="radio" name="name" value="val1" onChange="didSelectTops()">トップス</td>
+<td><input type="radio" name="name" value="val2" onChange="didSelectOuter()">アウター</td>
+<td><input type="radio" name="name" value="val2" onChange="didSelectRaguran()">ラグラン</td>
+<td><input type="radio" name="name" value="val2" onChange="didSelectBottoms()">ボトムス</td>
+<td><input type="radio" name="name" value="val2" onChange="didSelectShoes()">シューズ</td>
+<td><input type="radio" name="name" value="val2" onChange="didSelectWallet()">財布</td>
+</tr>
+</table>
+
 <div class="inputForm">
 <%= form_for(@size) do |f| %>
 
 商品番号　<%= f.text_field :item_number %><br><br>
+
+
 
 <table class="sizechart" cellspacing="0" cellpadding="0">
   <% (1..15).each do |i| %>
@@ -28,19 +41,98 @@
 </div>
 
 
+
+
+
 <script type="text/javascript">
+
+var inputFormArray = document.getElementsByName("inputData");
+inputFormArray[0].value = 'サイズ(cm)';
+
 function save() {
   
-    var array = [];
-    var inputForm = document.getElementsByName("inputData");
-    for(index in inputForm) {
-      console.log(inputForm[index].value); 
-      array.push(inputForm[index].value);
-    }
-    
-    $("#measurement").val(array);
-    
+  var array = [];
+  var newInputFormArray = document.getElementsByName("inputData");
+  for(index in newInputFormArray) {
+    array.push(newInputFormArray[index].value);
+  }
+  
+  $("#measurement").val(array);
 }
+  
+function didSelectTops() {
+  console.log("didSelectTops");
+  var inputFormArray = document.getElementsByName("inputData");
+  inputFormArray[0].value = 'サイズ(cm)';
+  inputFormArray[1].value = '身幅';
+  inputFormArray[2].value = '着丈';
+  inputFormArray[3].value = '肩幅';
+  inputFormArray[4].value = '袖丈';
+  inputFormArray[5].value = '重量(g)';
+  inputFormArray[6].value = '';
+  
+}
+
+function didSelectOuter() {
+  console.log("didSelectOuter")
+  var inputFormArray = document.getElementsByName("inputData");
+  inputFormArray[0].value = 'サイズ(cm)';
+  inputFormArray[1].value = '身幅';
+  inputFormArray[2].value = '着丈';
+  inputFormArray[3].value = '肩幅';
+  inputFormArray[4].value = '袖丈';
+  inputFormArray[5].value = '重量(g)';
+  inputFormArray[6].value = '';
+}
+
+function didSelectBottoms() {
+  console.log("didSelectBottoms")
+  var inputFormArray = document.getElementsByName("inputData");
+  inputFormArray[0].value = 'サイズ(cm)';
+  inputFormArray[1].value = 'ウエスト';
+  inputFormArray[2].value = '股下';
+  inputFormArray[3].value = '股上';
+  inputFormArray[4].value = 'ワタリ';
+  inputFormArray[5].value = '裾幅';
+  inputFormArray[6].value = '重量(g)';
+}
+
+function didSelectRaguran() {
+  console.log("didSelectRaguran")
+  var inputFormArray = document.getElementsByName("inputData");
+  inputFormArray[0].value = 'サイズ(cm)';
+  inputFormArray[1].value = '身幅';
+  inputFormArray[2].value = '着丈';
+  inputFormArray[3].value = 'ユキ丈';
+  inputFormArray[4].value = '重量(g)';
+  inputFormArray[5].value = '';
+  inputFormArray[6].value = '';
+}
+
+function didSelectShoes() {
+  console.log("didSelectShoes")
+  var inputFormArray = document.getElementsByName("inputData");
+  inputFormArray[0].value = 'サイズ(cm)';
+  inputFormArray[1].value = '対応サイズ';
+  inputFormArray[2].value = '高さ';
+  inputFormArray[3].value = '重量(g)';
+  inputFormArray[4].value = '';
+  inputFormArray[5].value = '';
+  inputFormArray[6].value = '';
+}
+
+function didSelectWallet() {
+  console.log("didSelectWallet")
+  var inputFormArray = document.getElementsByName("inputData");
+  inputFormArray[0].value = 'サイズ(cm)';
+  inputFormArray[1].value = '縦';
+  inputFormArray[2].value = '横';
+  inputFormArray[3].value = '暑さ';
+  inputFormArray[4].value = '重量(g)';
+  inputFormArray[5].value = '';
+  inputFormArray[6].value = '';
+}
+
 </script>
 
 

@@ -7,7 +7,7 @@ class PeopleController < ApplicationController
   
   def show
     @person = Person.new
-    @person = Person.all
+    @person = Person.all.reverse
   end
   
   def new

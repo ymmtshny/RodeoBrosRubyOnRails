@@ -6,7 +6,7 @@ class RelatedsController < ApplicationController
   
   def show
     @related = Related.new
-    @related = Related.all
+    @related = Related.all.reverse
   end
   
   def new

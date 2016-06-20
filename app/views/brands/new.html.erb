@@ -6,55 +6,55 @@
 <table>
 <tr>
 <td>日本語名</td>
-<td><%= f.text_field :nameJP %></td>
+<td><%= f.text_field :nameJP , placeholder: "例 バンソン" %></td>
 </tr>
 <tr>
 <td>英語名</td>
-<td><%= f.text_field :nameEng %></td>
+<td><%= f.text_field :nameEng, placeholder: "例 VANSON" %></td>
 </tr>
 <tr>
 <td>楽天URL</td>
-<td><%= f.text_field :rakutenURL %></td>
+<td><%= f.text_field :rakutenURL, placeholder: "例 http://item.rakuten.co.jp/auc-rodeo/c/0000001803/" %></td>
 </tr>
 <tr>
 <td>楽天2ndURL</td>
-<td><%= f.text_field :rakuten2ndURL %></td>
+<td><%= f.text_field :rakuten2ndURL, placeholder: "例 http://item.rakuten.co.jp/rodeo-2nd/c/0000000176/" %></td>
 </tr>
 <tr>
 <td>ヤフーURL</td>
-<td><%= f.text_field :yahooURL %><br></td>
+<td><%= f.text_field :yahooURL, placeholder: "例 http://store.shopping.yahoo.co.jp/rodeobros/vanson28a5.html" %></td>
 </tr>
 <tr>
 <td>公式URL</td>
-<td><%= f.text_field :officialURL %><br></td>
+<td><%= f.text_field :officialURL , placeholder: "例 http://www.aun-wa.com/SHOP/g44062/list.html" %></td>
 </tr>
 
 <td>ブランドロゴ画像URL</td>
-<td><%= f.text_field :imageURL %><br></td>
+<td><%= f.text_field :imageURL, placeholder: "例 http://image.rakuten.co.jp/auc-rodeo/cabinet/top/itempage/vanson_brand.jpg" %></td>
 </tr>
 
 <td>ブランド説明文</td>
-<td><%= f.text_area :description %><br></td>
+<td><%= f.text_area :description , placeholder: "例 最高品質のレザーウエアを追求し..." %></td>
 </tr>
 
-<td>カテゴリー説明文（楽天）</td>
-<td><%= f.text_area :categoryRakutenHTML %><br></td>
+<td>カテゴリーHTML（楽天）</td>
+<td><%= f.text_area :categoryRakutenHTML, placeholder: "HTMLを入力" %></td>
 </tr>
 
-<td>カテゴリー説明文（楽天2nd）</td>
-<td><%= f.text_area :categoryRakuten2ndHTML %><br></td>
+<td>カテゴリーHTML（楽天2nd）</td>
+<td><%= f.text_area :categoryRakuten2ndHTML , placeholder: "HTMLを入力" %></td>
 </tr>
 
-<td>カテゴリー説明文（Yahoo）</td>
-<td><%= f.text_area :categoryYahooHTML %><br></td>
+<td>カテゴリーHTML（Yahoo）</td>
+<td><%= f.text_area :categoryYahooHTML , placeholder: "HTMLを入力" %></td>
 </tr>
 
-<td>カテゴリー説明文（YahooSP）</td>
-<td><%= f.text_area :categoryYahooSPHTML %><br></td>
+<td>カテゴリーHTML（YahooSP）</td>
+<td><%= f.text_area :categoryYahooSPHTML, placeholder: "HTMLを入力" %></td>
 </tr>
 
-<td>カテゴリー説明文（公式）</td>
-<td><%= f.text_area :categoryOfficialHTML %><br></td>
+<td>カテゴリーHTML（公式）</td>
+<td><%= f.text_area :categoryOfficialHTML, placeholder: "HTMLを入力" %></td>
 </tr>
 
 </table>

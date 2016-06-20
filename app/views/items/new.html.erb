@@ -6,15 +6,15 @@
 <table>
 <tr>
 <td>商品名</td>
-<td><%= f.text_field :name %></td>
+<td><%= f.text_field :name, placeholder: "スカル ワンポイント 刺繍 ポロシャツ" %></td>
 </tr>
 <tr>
 <td>品番</td>
-<td><%= f.text_field :number %></td>
+<td><%= f.text_field :number, placeholder: "kav-201" %></td>
 </tr>
 <tr>
-<td>ゼロ番画像</td>
-<td><%= f.text_field :imgURLcommonPart %></td>
+<td>画像</td>
+<td><%= f.text_field :imgURLcommonPart , placeholder: "vanson/kav-201" %></td>
 </tr>
 <tr>
 <td>ブランド</td>
@@ -38,28 +38,28 @@
 
 <tr>
 <td>商品説明文</td>
-<td><%= f.text_area :description %><br></td>
+<td><%= f.text_area :description, placeholder: "HTMLを入力。改行は<br>" %><br></td>
 </tr>
 
 <tr>
 <td>商品詳細</td>
-<td><%= f.text_area :detail %><br></td>
+<td><%= f.text_area :detail, placeholder: "改行は<br>" %><br></td>
 </tr>
 
 
 <tr>
 <td>素材</td>
-<td><%= f.text_field :material %><br></td>
+<td><%= f.text_field :material, placeholder: "未入力の場合は出力されません。" %><br></td>
 </tr>
 
 <tr>
 <td>生産国</td>
-<td><%= f.text_field :madein %><br></td>
+<td><%= f.text_field :madein, placeholder: "未入力の場合は出力されません。" %><br></td>
 </tr>
 
 <tr>
 <td>加工</td>
-<td><%= f.text_field :process %><br></td>
+<td><%= f.text_field :process, placeholder: "未入力の場合は出力されません。" %><br></td>
 </tr>
 
 

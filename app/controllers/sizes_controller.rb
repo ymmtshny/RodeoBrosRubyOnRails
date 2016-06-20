@@ -6,7 +6,7 @@ class SizesController < ApplicationController
     end
     
     def show
-        @size = Size.all
+        @size = Size.all.reverse
     end
     
     def create

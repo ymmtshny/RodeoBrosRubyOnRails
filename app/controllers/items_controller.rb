@@ -21,25 +21,17 @@ class ItemsController < ApplicationController
   
   def rakuten
   end
-  
-  def rakutenIframe
-  end
 
   def yahoo
-  end
-  
-  def yahooIframe
   end
 
   def official
   end
-  
-  def officialIframe
-  end
+
   
   def show
     @item = Item.new
-    @item = Item.all
+    @item = Item.all.reverse
   end
   
   def new

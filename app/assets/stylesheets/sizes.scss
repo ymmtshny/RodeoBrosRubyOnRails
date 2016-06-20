@@ -1,6 +1,14 @@
 // Place all the styles related to the Sizes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.inputTable {
+
+    margin-bottom:2em;
+    width:100%;
+}
+
+
 .sizechart {
     
     border-collapse: collapse！important;
@@ -26,4 +34,10 @@
     width: 150px;
     word-wrap: break-word;
     padding:1em 0;
+}
+
+button {
+        width: 200px;
+    height: 50px;
+    margin-top: 40px;
 }

@@ -10,7 +10,7 @@ class BrandsController < ApplicationController
   
   def show
     @brand = Brand.new
-    @brand = Brand.all
+    @brand = Brand.all.reverse
   end
   
   

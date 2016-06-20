@@ -28,17 +28,14 @@
 <td>
   <%= item.name %><br><br>
   <%= link_to "楽天" , rakuten_item_path(item) %><br>
-  <%= link_to "楽天iframe" , rakutenIframe_item_path(item) %><br>
   <%= link_to "ヤフー" , yahoo_item_path(item) %><br>
-  <%= link_to "ヤフー iframe" , yahooIframe_item_path(item) %><br>
   <%= link_to "公式" , official_item_path(item) %><br>
-  <%= link_to "公式 iframe" , officialIframe_item_path(item) %><br>
 </td>
 <td><%= item.number %></td>
 <td><%= item.imgURLcommonPart %></td>
 <td>
   <% @image = Image.where(item_number: item.number)%><!--画像インスタンス-->
-  <% if @image.length > 0 %>画像<%=@image.length %>枚登録済み
+  <% if @image.length > 0 %>画像<span class="red"><%=@image.length %>枚</span>登録済み
   <% else %><span class="red">未登録</span>
   <% end %>
 </td>
@@ -50,8 +47,8 @@
 </td>
 <td><%= item.category %></td>
 <td>
-    <% @person =  Person.find(item.model_id) %>
-    <%= @person.size %>
+    <% @person =  Person.find_by_id(item.model_id) %>
+    <% if @person != nil %><%= @person.size %><% end %>
 </td>
 
 <td>
