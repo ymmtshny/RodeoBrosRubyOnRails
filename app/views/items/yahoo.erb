@@ -1,1 +1,221 @@
-Yahoo画面
+<% number = @item.number %>
+<% @image = Image.where(item_number: number)%>
+<% @brand =  Brand.find(@item.brand_id) %>
+<% model_id = @item.model_id %>
+<% @person =  Person.find(model_id) %>
+<% @related = Related.where(parentItemNumber: number)%>
+<% @size = Size.where(item_number: number) %>
+    <% @size.each do |size| %>
+        <% array = size.measurement.split(",") %>
+        <% @chart = Array.new %>
+        <% row = Array.new %>
+        <% (0..array.length).each do |i| %>
+            <% if i%10 == 0 %>
+                <% row = Array.new %>
+            <% end %>
+            <% if array[i] != "" %>
+                <% row.push(array[i]) %>
+            <% end %>
+            <% if i%10 == 9 %>
+                <% if row.length > 0 %>
+                <% @chart.push(row) %>
+                <% end %>
+            <% end %>
+        <% end %>
+    <% end %> 
+<!------------------------------------------------------------------------------>
+<h1>Yahoo</h1>
+<h3>Yahooのインラインフレーム</h3>
+<p>ブランドのリンクをYahooのリンクに置換済み。関連商品URLhttp://item.rakuten.co.jp/auc-rodeo/
+ではじまるリンクをhttp://store.shopping.yahoo.co.jp/rodeobros/に置換済み。</p>
+<!--------------------------------------------------------------------------->
+<textarea rows="25" cols="160">
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="ja">
+    <meta name="keywords" content="<%= @item.name %>,<%= @brand.nameJP %>,<%= @brand.nameEng %>">
+    <meta name="description" content="<%= @item.name %>。創業から40年の老舗セレクトショップ、ロデオブロス（RODEO BROS）">
+    <title><%= @item.name %></title>
+    <link rel="shortcut icon" href="http://www.rakuten.ne.jp/gold/auc-rodeo/images/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://www.rakuten.ne.jp/gold/auc-rodeo/items/css/style0530.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <table width="840" class="brandConcept"><tr>
+        <td><a href="<%= @brand.yahooURL %>" target="_top"><img src="<%= @brand.imageURL %>" class="brandImage"></a></td>
+        <td><%= @brand.description %></td>
+    </tr></table>
+     <div id="left" class="arrows"><img src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/assets_20151105/img/item_left.png"></div>
+      <div class="itemImagesWrapper"><img id="mainImage" src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= @item.imgURLcommonPart %>-1.jpg?_ex=700x700" class="itemImages"></div>
+      <div id="right" class="arrows"><img src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/assets_20151105/img/item_right.png"></div>
+      <div class="thumbnailsWrapper">
+        <ul id="tnlist">
+          <% @image.each do |image| %>
+                <% description = image.description %>
+                <% description.gsub!('http://item.rakuten.co.jp/auc-rodeo/', 'http://store.shopping.yahoo.co.jp/rodeobros/') %><% description.gsub!('/"', '.html"') %>
+                <li><p class="textForImages text-center"><%= description %></p><img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=100x100" class="thumbImages"></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+  <script src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/js/700x700.js"></script>
+</html>
+</textarea>
+
+
+<!--------------------------------------------------------------------------->
+<h3>商品説明（PCのみ）</h3>
+<textarea rows="25" cols="160">
+    <% if @image.length < 13 %> 
+<iframe id="rodeoh" src="http://shopping.geocities.jp/rodeobros/items/<%=@item.number%>.html" width="850" height="850" scrolling="no" frameborder="0" style="border:none; display:block; margin:0;"></iframe>
+<% else %>
+<iframe id="rodeoh" src="http://shopping.geocities.jp/rodeobros/items/<%=@item.number%>.html" width="850" height="920" scrolling="no" frameborder="0" style="border:none; display:block; margin:0;"></iframe>
+<% end %>
+<%#####ここから同一#######%>
+<div id="shouhin">
+<h1><%= @item.name %></h1>
+<p><%= @item.description %></p><br><br>
+</div>
+<div id="shouhin_main">
+	<div id="shouhin_main_left">
+		<!--//ブランド //-->
+		<p id="m-brand">BRAND</p>
+		<p><a href="<%= @brand.yahooURL %>" target="_top"><%= @brand.nameEng %> (<%= @brand.nameJP %>)</a></p>
+		<!--//詳細 //-->
+		<p id="m-detail">DETAIL</p>
+		<p><%= @item.detail %></p>
+		<!--//モデル//-->
+		<% unless @person.size =="" %>
+		<p id="m-model">MODEL</p>
+		<div class="size_person">
+			<img src="http://shopping.c.yimg.jp/lib/rodeobros/staff07.png">
+			モデル: <%= @person.name %>
+			<br>身長: <%= @person.height %>cm
+			<br>体重: <%= @person.weight %>kg
+			<br>サイズ: <%= @person.size %>
+		</div>
+		<!--//関連 //-->
+		<div id="clear">
+			<p id="m-total">TOTAL</p>モデル着用商品<br>
+			<% @related.each do |related| %>
+                ・<a href="http://store.shopping.yahoo.co.jp/rodeobros/<%= related.itemNumber %>.html"><%= related.itemName %></a><br>
+            <% end %>
+		</div>
+		<% end %>
+	</div>
+	<!--//商品説明「右」ここから //-->
+	<div id="shouhin_main_right">
+		<!--//サイズ表//-->
+		<p id="m-size">SIZE</p>
+        <% colIndex = 0 %><% rowIndex = 0 %><table border="0" width="435"  cellspacing="1" cellpadding="5" bgcolor="C0C0C0" style="border-collapse: separate;"><% @chart.each do |row| %><% if rowIndex == 0 %><tr bgcolor="EEEEEE"align="center"><% else %><tr align="center" bgcolor="ffffff"><% end %><% row.each do |col| %><% if colIndex == 0 %><td bgcolor="EEEEEE" width="1%"><% else %><td width="1%"><% end %><%= col %></td><% colIndex += 1  %><% end %></tr><% rowIndex += 1  %><% colIndex = 0  %><% end %></table>
+		<p>サイズは若干前後します。
+			<a href="http://shopping.geocities.jp/rodeobros/size-chart-all.html" target="_blank">サイズの測り方</a>
+		</p>
+		<!--//素材生産加工など//-->
+		<p id="m-mate">MATERIAL</p>
+		<table border="0" width="435" cellspacing="1" cellpadding="5" bgcolor="C0C0C0" style="height: 60px; border-collapse: separate;">
+				<% unless @item.material =="" %><tr bgcolor="ffffff">
+					<td align="center" bgcolor="EEEEEE" width="20%">素材</td>
+					<td><%= @item.material %></td>
+				</tr><% end %>
+				<% unless @item.madein =="" %><tr bgcolor="ffffff">
+					<td align="center" bgcolor="EEEEEE" width="20%">生産</td>
+					<td><%= @item.madein %></td>
+				</tr><% end %>
+				<% unless @item.process =="" %><tr bgcolor="ffffff">
+					<td align="center" bgcolor="EEEEEE" width="20%">加工</td>
+					<td><%= @item.process %></td>
+				</tr><% end %>
+		</table>
+	</div>
+	<div id="shouhin_main_bottom">
+		<!--// 再入荷等ここから //-->
+		<img src="http://shopping.c.yimg.jp/lib/rodeobros/notes.jpg" style="width:835px; padding-top:18px;margin-bottom:30px;">
+		
+		<div id="more">
+			<a href="<%= @brand.yahooURL %>" target="_top">
+				<div><%= @brand.nameEng %> (<%= @brand.nameJP %>) 商品一覧へ </div>
+			</a>
+		</div>
+		<%= @brand.categoryYahooHTML %>
+	</div>
+</div>
+</textarea>
+
+<!--------------------------------------------------------------------------->
+
+<h3>フリースペース（SPのみ）</h3>
+<textarea rows="25" cols="160">
+<center>
+送料無料 ＋ 土日祝日も営業<br><br>
+15:00 までのご注文は 即日発送<br><br>
+<table width="320">
+<% numberOfImage = 0 %>
+<% @image.each do |image| %>
+    <% if numberOfImage < 10 %><%#楽天画像に所属フォルダが存在する時#%>
+        <% if image.imageURLCommonPart.split('/').length > 1 %>
+            <tr><td><img src="http://shopping.c.yimg.jp/lib/rodeobros/<%= image.imageURLCommonPart.split('/')[1] %>"><br><%= image.description %><br><br><br></td></tr>
+        <% else %>
+            <tr><td><img src="http://shopping.c.yimg.jp/lib/rodeobros/<%= image.imageURLCommonPart %>"><br><%= image.description %><br><br><br></td></tr>
+        <% end %>
+    <% end %>
+    <% numberOfImage += 1 %>
+<% end %>
+</table>
+<!--画像ここまで-->
+</center>
+<hr><br><br>
+<%######################%>
+<table>
+	<tr><td><b><%= @item.name %></b></td></tr>
+	<tr><td><%= @item.description %><br></td></tr>
+	<%######################%>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■BRAND</font></td></tr>
+	<tr><td><a href="<%= @brand.yahooURL %>"><%= @brand.nameEng %>(<%= @brand.nameJP %>)</a></td></tr>
+	<%######################%>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■DETAIL</font></td></tr>
+	<tr><td><%= @item.detail %></td></tr>
+	<%######################%>
+	<% unless @person.size =="" %>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■MODEL</font></td></tr>
+	<tr><td><%= @person.name %>/<%= @person.height %>cm/<%= @person.weight %>kg サイズ: <%= @person.size %></td></tr>
+	<% end %>
+	<%######################%>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■TOTAL</font></td></tr>
+	<tr><td>モデル着用商品<br><br></td></tr>	
+	<tr><td>
+		<% @related.each do |related| %>
+    	・<a href="http://store.shopping.yahoo.co.jp/rodeobros/<%= related.itemNumber %>.html"><%= related.itemName %></a><br><br>
+		<% end %>
+	</td></tr>
+	<%######################%>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■MATERIAL</font></td></tr>
+	<tr><td>
+		<table border="0" width="100%" cellspacing="1" cellpadding="5" bgcolor="C0C0C0">
+		<% unless @item.material =="" %><tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">素材</td>
+		<td><%= @item.material %></td></tr><% end %>
+		<% unless @item.madein =="" %><tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">生産</td>
+		<td><%= @item.madein %></td></tr><% end %>
+		<% unless @item.process =="" %><tr bgcolor="ffffff"><td align="center" bgcolor="EEEEEE" width="20%">加工</td>
+		<td><%= @item.process %></td></tr><% end %>
+		</table>
+	</td></tr>
+	<%######################%>
+	<tr><td bgcolor="#000000"><font color="#FFFFFF">■SIZE</font></td></tr>
+	<tr><td>
+		<% colIndex = 0 %><% rowIndex = 0 %><table border="0" width="100%" cellspacing="1" cellpadding="5" bgcolor="C0C0C0"><% @chart.each do |row| %><% if rowIndex == 0 %><tr bgcolor="EEEEEE"align="center"><% else %><tr align="center" bgcolor="ffffff"><% end %><% row.each do |col| %><% if colIndex == 0 %><td bgcolor="EEEEEE" width="1%"><% else %><td width="1%"><% end %><%= col %></td><% colIndex += 1  %><% end %></tr><% rowIndex += 1  %><% colIndex = 0  %><% end %></table>
+		<br>サイズは若干前後します。<a href="http://shopping.geocities.jp/rodeobros/size-chart-all.html" target="_blank">サイズの測り方</a> 
+	</td></tr>
+	<tr><td>
+	    <%= @brand.categoryYahooSPHTML %>
+	</td></tr>
+</table>
+</textarea><br>
+
+<!--------------------------------------------------------------------------->
+

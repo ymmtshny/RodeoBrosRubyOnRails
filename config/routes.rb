@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/items/new', to: 'items#new', as: 'new_item'
   get '/items/show', to: 'items#show', as: 'show_item'
   get '/items/rakuten/:id', to: 'items#rakuten', as: 'rakuten_item'
+  get '/items/rakuten2nd/:id', to: 'items#rakuten2nd', as: 'rakuten2nd_item'
   get '/items/yahoo/:id', to: 'items#yahoo', as: 'yahoo_item'
   get '/items/official/:id', to: 'items#official', as: 'official_item'
 

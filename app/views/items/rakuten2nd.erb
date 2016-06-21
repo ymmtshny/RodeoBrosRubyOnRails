@@ -24,101 +24,49 @@
         <% end %>
     <% end %> 
 <!------------------------------------------------------------------------------>
-<h1>楽天画面</h1>
+<h1>楽天2nd画面</h1>
 <!------------------------------------------------------------------------------>
-<h3>楽天商品名</h3>
+<h3>楽天商品名(2nd)</h3>
 <textarea rows="3" cols="160" id="rakutenItemNameTextArea">
-<%= @brand.nameEng %> <%= @brand.nameJP %> <%= @item.name %> <%= @item.number %>
+<%= @item.number %> <%= @brand.nameJP %> <%= @item.name %> <%= @brand.nameEng %>
 </textarea><br>
-<!------------------------------------------------------------------------------>
-<h3>楽天インラインフレーム</h3>
-<textarea rows="25" cols="160">
-<!--ここからだよーーーーー-->
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="content-language" content="ja">
-    <meta name="keywords" content="<%= @item.name %>,<%= @brand.nameJP %>,<%= @brand.nameEng %>">
-    <meta name="description" content="<%= @item.name %>。創業から40年の老舗セレクトショップ、ロデオブロス（RODEO BROS）">
-    <title><%= @item.name %></title>
-    <link rel="shortcut icon" href="http://www.rakuten.ne.jp/gold/auc-rodeo/images/favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="http://www.rakuten.ne.jp/gold/auc-rodeo/items/css/style0530.css">
-  </head>
-  <body>
-    <div class="wrapper">
-      <table width="840" class="brandConcept"><tr>
-        <td><a href="<%= @brand.rakutenURL %>" target="_top"><img src="<%= @brand.imageURL %>" class="brandImage"></a></td>
-        <td><%= @brand.description %></td>
-    </tr></table>
-     <div id="left" class="arrows"><img src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/assets_20151105/img/item_left.png"></div>
-      <div class="itemImagesWrapper"><img id="mainImage" src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= @item.imgURLcommonPart %>-1.jpg?_ex=700x700" class="itemImages"></div>
-      <div id="right" class="arrows"><img src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/assets_20151105/img/item_right.png"></div>
-      <div class="thumbnailsWrapper">
-        <ul id="tnlist">
-          <% @image.each do |image| %>
-                <li><p class="textForImages text-center"><%= image.description %></p><img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=100x100" class="thumbImages"></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </body>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-  <script src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/js/700x700.js"></script>
-</html>
-<!--ここまでだよーーーー-->
-</textarea>
 
 <!------------------------------------------------------------------------------>
-
-<h3>PC用商品説明文</h3>
+<h3>PC用商品説明文(2nd)</h3>
 <textarea rows="25" cols="160" id="rakutePCItemExplanationTextArea">
-<center>
-<% numberOfImage = 0 %>
-<% @image.each do |image| %>
-    <% if numberOfImage < 10 %>
-    <img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=700x700"><br><p class="imageText"><%= image.description %></p><br><br><br>
-    <% end %>
-    <% numberOfImage += 1 %>
-<% end %>
-</center>
-<%#####ここから同一#######%>
+
 <div id="shouhin">
 <h1><%= @item.name %></h1>
 <p><%= @item.description %></p>
 </div>
 <div id="shouhin_main">
 	<div id="shouhin_main_left">
-		
 		<!--//ブランド //-->
 		<p id="m-brand">BRAND</p>
-		<p><a href="<%= @brand.rakutenURL %>" target="_top"><%= @brand.nameEng %> (<%= @brand.nameJP %>)</a></p>
-		
-		<!--//詳細//-->
+		<p>
+			<a href="<%= @brand.rakutenURL %>" target="_top"><%= @brand.nameEng %> (<%= @brand.nameJP %>)</a>
+		</p>
+		<!--//詳細 //-->
 		<p id="m-detail">DETAIL</p>
 		<p><%= @item.detail %></p>
-		
 		<!--//モデル//-->
 		<% unless @person.size =="" %>
 		<p id="m-model">MODEL</p>
 		<div class="size_person">
 			<img src="http://www.rakuten.ne.jp/gold/auc-rodeo/staff_img/staff02.png">
-			モデル: <%= @person.name %>
+			  モデル: <%= @person.name %>
 			<br>身長: <%= @person.height %>cm
 			<br>体重: <%= @person.weight %>kg
 			<br>サイズ: <%= @person.size %>
 		</div>
-		
 		<!--//関連 //-->
 		<div id="clear">
 			<p id="m-total">TOTAL</p>モデル着用商品<br>
 			<% @related.each do |related| %>
-                ・<a href="http://item.rakuten.co.jp/auc-rodeo/<%= related.itemNumber %>/"><%= related.itemName %></a><br>
+                ・<a href="http://item.rakuten.co.jp/rodeo-2nd/<%= related.itemNumber %>/"><%= related.itemName %></a><br>
             <% end %>
 		</div>
 		<% end %>
-		
 	</div>
 	<!--//商品説明「右」ここから //-->
 	<div id="shouhin_main_right">
@@ -145,117 +93,29 @@
 				</tr><% end %>
 		</table>
 	</div>
+	
 	<div id="shouhin_main_bottom">
 		<div id="more">
 			<a href="<%= @brand.rakutenURL %>" target="_top">
 				<div><%= @brand.nameEng %> (<%= @brand.nameJP %>) 商品一覧へ </div>
 			</a>
 		</div>
-	    <%#####ここまで同一#######%>
-	    <%= @brand.categoryRakutenHTML %>
-		<!--ブランドコンセプトここから-->
-		<div id="more">
-			<a href="#rodeoh">
-				<div>ページ上に戻る </div>
-			</a>
-		</div>
-		<br>
-		<br>
 	</div>
-</div>
-</textarea>
-<!------------------------------------------------------------------------------>
-<h3>PC用販売説明文</h3>
-<textarea rows="25" cols="160" id="rakutePCSellExplanationTextArea">
-<% if @image.length < 13 %> 
-<iframe id="rodeoh" src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/<%=@item.number%>.html" width="850" height="850" scrolling="no" frameborder="0" style="border:none; display:block; margin:0;"></iframe>
-<% else %>
-<iframe id="rodeoh" src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/<%=@item.number%>.html" width="850" height="920" scrolling="no" frameborder="0" style="border:none; display:block; margin:0;"></iframe>
-<% end %>
-<%#####ここから同一#######%>
-<div id="shouhin">
-<h1><%= @item.name %></h1>
-<p><%= @item.description %></p><br><br>
-</div>
-<div id="shouhin_main">
-	<div id="shouhin_main_left">
-		<!--//ブランド //-->
-		<p id="m-brand">BRAND</p>
-		<p>
-			<a href="<%= @brand.rakutenURL %>" target="_top"><%= @brand.nameEng %> (<%= @brand.nameJP %>)</a>
-		</p>
-		<!--//詳細 //-->
-		<p id="m-detail">DETAIL</p>
-		<p><%= @item.detail %></p>
-		<!--//モデル//-->
-		<% unless @person.size =="" %>
-		<p id="m-model">MODEL</p>
-		<div class="size_person">
-			<img src="http://www.rakuten.ne.jp/gold/auc-rodeo/staff_img/staff02.png">
-			モデル: <%= @person.name %>
-			<br>身長: <%= @person.height %>cm
-			<br>体重: <%= @person.weight %>kg
-			<br>サイズ: <%= @person.size %>
-		</div>
-		<!--//関連 //-->
-		<div id="clear">
-			<p id="m-total">TOTAL</p>モデル着用商品<br>
-			<% @related.each do |related| %>
-                ・<a href="http://item.rakuten.co.jp/auc-rodeo/<%= related.itemNumber %>/"><%= related.itemName %></a><br>
-            <% end %>
-		</div>
-		<% end %>
-	</div>
-	<!--//商品説明「右」ここから //-->
-	<div id="shouhin_main_right">
-		<!--//サイズ表//-->
-		<p id="m-size">SIZE</p>
-        <% colIndex = 0 %><% rowIndex = 0 %><table border="0" width="435"  cellspacing="1" cellpadding="5" bgcolor="C0C0C0" style="border-collapse: separate;"><% chart.each do |row| %><% if rowIndex == 0 %><tr bgcolor="EEEEEE"align="center"><% else %><tr align="center" bgcolor="ffffff"><% end %><% row.each do |col| %><% if colIndex == 0 %><td bgcolor="EEEEEE" width="1%"><% else %><td width="1%"><% end %><%= col %></td><% colIndex += 1  %><% end %></tr><% rowIndex += 1  %><% colIndex = 0  %><% end %></table>
-		<p>サイズは若干前後します。
-			<a href="http://www.rakuten.ne.jp/gold/auc-rodeo/size-chart-all.html" target="_blank">サイズの測り方</a>
-		</p>
-		<!--//素材生産加工など//-->
-		<p id="m-mate">MATERIAL</p>
-		<table border="0" width="435" cellspacing="1" cellpadding="5" bgcolor="C0C0C0" style="height: 60px; border-collapse: separate;">
-				<% unless @item.material =="" %><tr bgcolor="ffffff">
-					<td align="center" bgcolor="EEEEEE" width="20%">素材</td>
-					<td><%= @item.material %></td>
-				</tr><% end %>
-				<% unless @item.madein =="" %><tr bgcolor="ffffff">
-					<td align="center" bgcolor="EEEEEE" width="20%">生産</td>
-					<td><%= @item.madein %></td>
-				</tr><% end %>
-				<% unless @item.process =="" %><tr bgcolor="ffffff">
-					<td align="center" bgcolor="EEEEEE" width="20%">加工</td>
-					<td><%= @item.process %></td>
-				</tr><% end %>
-		</table>
-	</div>
-	<div id="shouhin_main_bottom">
-		<!--// 再入荷等ここから //-->
-		<img src="http://image.rakuten.co.jp/auc-rodeo/cabinet/bana/notes.jpg" style="width:835px; padding-top:18px;margin-bottom:30px;">
+	<center>
 		
-		<!--// 楽天グローバルここから //-->
-		<table width="750" align="center">
-			<tr>
-				<td  height="40px"  align="center"><a href="http://global.rakuten.com/en/store/auc-rodeo/item/<%= number %>/" target="_blank"><img src="http://image.rakuten.co.jp/auc-rodeo/cabinet/top/itempage/gm_1_g.jpg" border="0" width=""></a></td>
-				<td width="10"></td>
-				<td  align="center" height="40px"><a href="http://global.rakuten.com/ko/store/auc-rodeo/item/<%= number %>/" target="_blank"><img src="http://image.rakuten.co.jp/auc-rodeo/cabinet/top/itempage/gm_2_g.jpg" border="0"></a></td>
-			</tr>
-			<tr>
-				<td  align="center"height="40px"><a href="http://global.rakuten.com/zh-tw/store/auc-rodeo/item/<%= number %>/" target="_blank"><img src="http://image.rakuten.co.jp/auc-rodeo/cabinet/top/itempage/gm_3_g.jpg" border="0"></a></td>
-				<td width="10"></td>
-				<td  align="center" height="40px"><a href="http://global.rakuten.com/zh-cn/store/auc-rodeo/item/<%= number %>/" target="_blank"><img src="http://image.rakuten.co.jp/auc-rodeo/cabinet/top/itempage/gm_4_g.jpg" border="0"></a></td>
-			</tr>
-		</table>
+<% numberOfImage = 0 %>
+<% @image.each do |image| %>
+    <% if numberOfImage < 10 %>
+    <img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=700x700"><br><p class="imageText"><%= image.description %></p><br><br><br>
+    <% end %>
+    <% numberOfImage += 1 %>
+<% end %>
+</center>
 
-		<div id="more">
-			<a href="<%= @brand.rakutenURL %>" target="_top">
-				<div><%= @brand.nameEng %> (<%= @brand.nameJP %>) 商品一覧へ </div>
-			</a>
-		</div>
-	    <%#####ここまで同一#######%>
-	</div>
+	    <%= @brand.categoryRakutenHTML %>
+		<br>
+		<br>
+
 </div>
 </textarea>
 <!------------------------------------------------------------------------------>
@@ -313,7 +173,7 @@
 	<tr><td>モデル着用商品<br><br></td></tr>	
 	<tr><td>
 		<% @related.each do |related| %>
-    	・<a href="http://item.rakuten.co.jp/auc-rodeo/<%= related.itemNumber %>/"><%= related.itemName %></a><br><br>
+    	・<a href="http://item.rakuten.co.jp/rodeo-2nd/<%= related.itemNumber %>/"><%= related.itemName %></a><br><br>
 		<% end %>
 	</td></tr>
 	<%######################%>

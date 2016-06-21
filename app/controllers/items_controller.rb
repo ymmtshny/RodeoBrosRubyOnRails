@@ -4,11 +4,10 @@ class ItemsController < ApplicationController
   before_action :set_brand
   before_action :set_person
   before_action :find_item, only: [:rakuten, 
-                                   :rakutenIframe,
                                    :yahoo,
-                                   :yahooIframe,
                                    :official,
-                                   :officialIframe
+                                   :rakuten2nd
+                                   
                                    ]
   
   def index
@@ -20,6 +19,9 @@ class ItemsController < ApplicationController
 
   
   def rakuten
+  end
+  
+  def rakuten2nd
   end
 
   def yahoo
