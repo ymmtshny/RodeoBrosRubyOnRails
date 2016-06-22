@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/items/yahoo/:id', to: 'items#yahoo', as: 'yahoo_item'
   get '/items/official/:id', to: 'items#official', as: 'official_item'
 
+  get '/items/copy/:id', to: 'items#copy', as: 'copy_item'
   
   
   get '/brands/new', to: 'brands#new', as: 'new_brand'
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
   
   get '/sizes/new', to: 'sizes#new', as: 'new_size'
   get '/sizes/show', to: 'sizes#show', as: 'show_size'
+  get '/sizes/copy/:id', to: 'sizes#copy', as: 'copy_size'
   
   resources :items
   resources :brands

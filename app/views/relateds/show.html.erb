@@ -6,21 +6,21 @@
 
 <table class="imageListTable">
 <tr>
-<td>商品番号（親）</td>
-<td>商品番号</td>
-<td>商品名</td>
-<td>画像共通部分</td>
-<td>edit</td>
-<td>delete</td>
+    <td>操作</td>
+    <td>商品番号（親）</td>
+    <td>商品番号</td>
+    <td>商品名</td>
+    <td>画像共通部分</td>
 </tr>
  <% @related.each do |related| %>
 <tr>
-<td><%= related.parentItemNumber %></td>
-<td><%= related.itemNumber %></td>
-<td><%= related.itemName %></td>
-<td><%= related.imageURLCommonPart %></td>
-<td><%= link_to "編集" , edit_related_path(related) %></td>
-<td><%= link_to "削除" , related , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+    <td><%= link_to "編集" , edit_related_path(related) %><br><br>
+    　　<%= link_to "削除" , related , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+    </td>
+    <td><%= related.parentItemNumber %></td>
+    <td><%= related.itemNumber %></td>
+    <td><%= related.itemName %></td>
+    <td><%= related.imageURLCommonPart %></td>
 </tr>
 <% end %>
 </table>

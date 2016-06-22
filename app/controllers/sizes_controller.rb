@@ -1,8 +1,15 @@
 class SizesController < ApplicationController
-    before_action :set_size, only: [:edit, :update, :destroy]
+    before_action :set_size, only: [:edit, :update, :destroy,:copy]
     
     def new
         @size = Size.new
+    end
+    
+    def copy 
+        @newsize = Size.new
+        @newsize.measurement = @size.measurement
+        @newsize.save
+        redirect_to show_size_path , notice: 'サイズ表をコピーしました。'
     end
     
     def show

@@ -44,7 +44,7 @@
   <body>
     <div class="wrapper">
       <table width="840" class="brandConcept"><tr>
-        <td><a href="<%= @brand.yahooURL %>" target="_top"><img src="<%= @brand.imageURL %>" class="brandImage"></a></td>
+        <td><a href="<%= @brand.officialURL %>" target="_top"><img src="<%= @brand.imageURL %>" class="brandImage"></a></td>
         <td><%= @brand.description %></td>
     </tr></table>
      <div id="left" class="arrows"><img src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/assets_20151105/img/item_left.png"></div>
@@ -82,7 +82,7 @@
 	<div id="shouhin_main_left">
 		<!--//ブランド //-->
 		<p id="m-brand">BRAND</p>
-		<p><a href="<%= @brand.yahooURL %>" target="_top"><%= @brand.nameEng %> (<%= @brand.nameJP %>)</a></p>
+		<p><a href="<%= @brand.officialURL %>" target="_top"><%= @brand.nameEng %> (<%= @brand.nameJP %>)</a></p>
 		<!--//詳細 //-->
 		<p id="m-detail">DETAIL</p>
 		<p><%= @item.detail %></p>

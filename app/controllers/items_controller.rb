@@ -6,17 +6,13 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:rakuten, 
                                    :yahoo,
                                    :official,
-                                   :rakuten2nd
+                                   :rakuten2nd,
+                                   :copy
                                    
                                    ]
   
   def index
   end
-  
-  def find_item
-    @item = Item.find(params[:id])
-  end
-
   
   def rakuten
   end
@@ -29,10 +25,28 @@ class ItemsController < ApplicationController
 
   def official
   end
+  
+  def copy
+    @newitem = Item.new
+    @newitem.brand_id = @item.brand_id
+    @newitem.description = @item.description
+    @newitem.detail = @item.detail
+    @newitem.category = @item.category
+    @newitem.model_id = @item.model_id
+    @newitem.material = @item.material
+    @newitem.madein = @item.madein
+    @newitem.process = @item.process
+    @newitem.save
+    
+    redirect_to show_item_path , notice: '商品情報をコピーしました。'
+  end
+  
+  def find_item
+    @item = Item.find(params[:id])
+  end
 
   
   def show
-    @item = Item.new
     @item = Item.all.reverse
   end
   
@@ -93,6 +107,8 @@ class ItemsController < ApplicationController
                                  :imgURLcommonPart,
                                  :detail)
   end
+
+  
 
 
 end

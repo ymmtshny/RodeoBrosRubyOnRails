@@ -5,15 +5,18 @@
 <p>※画像２０枚まで表示します。</p>
 <table class="imageListTable">
 <tr>
+    
+<td>操作</td>
 <td>商品番号</td>
 <td>画像</td>
 <td>説明文</td>
-<td>edit</td>
-<td>delete</td>
+
 </tr>
 <% index = 0 %>
 <% @image.each do |image| %>
 <tr>
+<td><%= link_to "編集" , edit_image_path(image) %><br><br>
+<%= link_to "削除" , image , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
 <td><%= image.item_number %></td>
 
 <% if index < 20 %>
@@ -23,8 +26,7 @@
 <% end %>
 
 <td><%= image.description %></td>
-<td><%= link_to "編集" , edit_image_path(image) %></td>
-<td><%= link_to "削除" , image , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+
 </tr>
 <% index += 1 %>
 <% end %>

@@ -6,13 +6,20 @@
 
 <table class="showSizeTable">
 <tr>
+    
+<td>操作</td>
 <td>商品番号</td>
 <td>サイズ表</td>
-<td>edit</td>
-<td>delete</td>
+
 </tr>
+
  <% @size.each do |size| %>
 <tr>
+<td>
+    <%= link_to "コピー" , copy_size_path(size) %><br><br>
+    <%= link_to "編集" , edit_size_path(size) %><br><br>
+    <%= link_to "削除" , size , method: :delete, data: { confirm: '削除してもよろしいですか？' } %><br><br>
+</td>
 <td><%= size.item_number %></td>
 <td>
     <!---->
@@ -61,8 +68,6 @@
     <!---->   
 </td>
 
-<td><%= link_to "編集" , edit_size_path(size) %></td>
-<td><%= link_to "削除" , size , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
 </tr>
 <% end %>
 </table>
