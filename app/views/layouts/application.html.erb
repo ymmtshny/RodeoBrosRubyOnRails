@@ -7,20 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+<table class="index">
+<tr><td><h1><%= link_to "RODEO BROS", root_path %></h1></td></tr>
+<tr><td><%= link_to "サイズ表の参照", show_size_path %></td></tr>
+<tr><td><%= link_to "サイズ表の追加", new_size_path %></td></tr>
+<tr><td><%= link_to "着用サイズの参照", show_person_path %></td></tr>
+<tr><td><%= link_to "着用サイズの追加", new_person_path %></td></tr>
+<tr><td><%= link_to "関連商品の参照", show_related_path %></td></tr>
+<tr><td><%= link_to "関連商品の追加", new_related_path %></td></tr>
+<tr><td><%= link_to "画像の参照", show_image_path %></td></tr>
+<tr><td><%= link_to "画像の追加", new_image_path %></td></tr>
+<tr><td><%= link_to "ブランドの参照", show_brand_path %></td></tr>
+<tr><td><%= link_to "ブランドの追加", new_brand_path %></td></tr>
+<tr><td><%= link_to "商品の参照", show_item_path %></td></tr>
+<tr><td><%= link_to "商品の追加", new_item_path %></td></tr>
+</table>
+
 <div id="wrapper">
   
   <% if notice %>
-      <div class="alert">
-        <%= notice %>
-      </div>
+    <div class="alert">
+  <%= notice %>
+    </div>
   <% end %>
   
   <%= yield %>
   
-  <table id="backToHome">
-    <tr><td><%= link_to "ホーム画面に戻る", root_path %></td></tr>
-  </table>
-
 </div>
 </body>
 </html>
