@@ -16,7 +16,7 @@
             <% if array[i] != "" %>
                 <% row.push(array[i]) %>
             <% end %>
-            <% if i%10 == 9 %>
+            <% if i%10 == 0 %>
                 <% if row.length > 0 %>
                 <% @chart.push(row) %>
                 <% end %>
@@ -48,14 +48,14 @@
         <td><%= @brand.description %></td>
     </tr></table>
      <div id="left" class="arrows"><img src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/assets_20151105/img/item_left.png"></div>
-      <div class="itemImagesWrapper"><img id="mainImage" src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= @item.imgURLcommonPart %>-1.jpg?_ex=700x700" class="itemImages"></div>
+      <div class="itemImagesWrapper"><img id="mainImage" src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= @item.imgURLcommonPart %>-1.jpg?_ex=700x700" alt="<%= @item.name %>" class="itemImages"></div>
       <div id="right" class="arrows"><img src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/assets_20151105/img/item_right.png"></div>
       <div class="thumbnailsWrapper">
         <ul id="tnlist">
           <% @image.each do |image| %>
                 <% description = image.description %>
                 <% description.gsub!('http://item.rakuten.co.jp/auc-rodeo/', 'http://www.aun-wa.com/SHOP/') %><% description.gsub!('/"', '.html"') %>
-                <li><p class="textForImages text-center"><%= description %></p><img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=100x100" class="thumbImages"></li>
+                <li><p class="textForImages text-center"><%= description %></p><img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=100x100" alt="<%= @item.name %>" class="thumbImages"></li>
           <% end %>
         </ul>
       </div>
@@ -75,7 +75,7 @@
     <% end %>
 <%#####ここから同一#######%>
 <div id="shouhin">
-<h1><%= @item.name %></h1>
+<p><%= @item.name %></p>
 <p><%= @item.description %></p><br><br>
 </div>
 <div id="shouhin_main">
@@ -154,7 +154,7 @@
 <% numberOfImage = 0 %>
     <% @image.each do |image| %>
     <% if numberOfImage < 10 %>
-    <img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=700x700"><br><p class="imageText"><%= image.description %></p><br><br><br>
+    <img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=700x700" alt="<%= @item.name %>"><br><p class="imageText"><%= image.description %></p><br><br><br>
     <% end %>
     <% numberOfImage += 1 %>
 <% end %>

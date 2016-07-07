@@ -24,12 +24,14 @@ Rails.application.routes.draw do
   
   get '/images/new', to: 'images#new', as: 'new_image'
   get '/images/show', to: 'images#show', as: 'show_image'
+  get '/images/copy/:id', to: 'images#copy', as: 'copy_image'
   
   get '/people/new', to: 'people#new', as: 'new_person'
   get '/people/show', to: 'people#show', as: 'show_person'
   
   get '/relateds/new', to: 'relateds#new', as: 'new_related'
   get '/relateds/show', to: 'relateds#show', as: 'show_related'
+  get '/relateds/copy/:id', to: 'relateds#copy', as: 'copy_related'
   
   get '/sizes/new', to: 'sizes#new', as: 'new_size'
   get '/sizes/show', to: 'sizes#show', as: 'show_size'

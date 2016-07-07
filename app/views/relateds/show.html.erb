@@ -14,7 +14,9 @@
 </tr>
  <% @related.each do |related| %>
 <tr>
-    <td><%= link_to "編集" , edit_related_path(related) %><br><br>
+    <td>
+        <%= link_to "コピー" , copy_related_path(related) %><br><br>
+        <%= link_to "編集" , edit_related_path(related) %><br><br>
     　　<%= link_to "削除" , related , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
     </td>
     <td><%= related.parentItemNumber %></td>

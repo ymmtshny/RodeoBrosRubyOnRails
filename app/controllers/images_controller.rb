@@ -1,8 +1,15 @@
 class ImagesController < ApplicationController
   
-  before_action :set_image, only: [:edit, :update, :destroy]
+  before_action :set_image, only: [:edit, :update, :destroy, :copy]
 
   def index
+  end
+  
+  def copy 
+      @newImage = Image.new
+      @newImage.item_number = @image.item_number
+      @newImage.save
+      redirect_to show_image_path , notice: '画像をコピーしました。'
   end
   
   def show

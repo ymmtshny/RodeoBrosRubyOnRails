@@ -16,7 +16,7 @@
             <% if array[i] != "" %>
                 <% row.push(array[i]) %>
             <% end %>
-            <% if i%10 == 9 %>
+            <% if i%10 == 0 %>
                 <% if row.length > 0 %>
                 <% chart.push(row) %>
                 <%#NEED_TO_BE_FIXED#%>
@@ -40,7 +40,7 @@
 <% numberOfImage = 0 %>
 <% @image.each do |image| %>
     <% if numberOfImage < 10 %>
-    <img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=700x700"><br><p class="imageText"><%= image.description %></p><br><br><br>
+    <img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=700x700" alt="<%= @item.name %>"><br><p class="imageText"><%= image.description %></p><br><br><br>
     <% end %>
     <% numberOfImage += 1 %>
 <% end %>
@@ -88,7 +88,7 @@
 <% numberOfImage = 0 %>
 <% @image.each do |image| %>
     <% if numberOfImage < 10 %>
-    <tr><td><img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=320x320"><br><%= image.description %><br><br><br></td></tr>
+    <tr><td><img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=320x320" alt="<%= @item.name %>"><br><%= image.description %><br><br><br></td></tr>
     <% end %>
     <% numberOfImage += 1 %>
 <% end %>
@@ -145,17 +145,17 @@
 
 <script>
 	
-	let max_rakutenItemNameTextArea_length = 127;
-	let max_rakutenPCItemExplanationTextArea_length = 5120;
-	let max_rakutenPCSellExplanationTextArea_length = 5120;
-	let max_rakutenSPExplanationTextArea_length = 5120;
-	let max_rakutenMobileExplanationTextArea_length = 512;
+	var max_rakutenItemNameTextArea_length = 127;
+	var max_rakutenPCItemExplanationTextArea_length = 5120;
+	var max_rakutenPCSellExplanationTextArea_length = 5120;
+	var max_rakutenSPExplanationTextArea_length = 5120;
+	var max_rakutenMobileExplanationTextArea_length = 512;
 	
-  	let rakutenItemNameTextArea_Length = $("#rakutenItemNameTextArea").length;
-  	let rakutePCSellExplanationTextArea_Lenght = $("rakutePCSellExplanationTextArea").length;
-  	let rakutePCItemExplanationTextArea_Lenght = $("rakutePCItemExplanationTextArea").length;
-  	let rakuteSPExplanationTextArea_Lenght = $("rakuteSPExplanationTextArea").length;
-  	let rakuteMobileExplanationTextArea_Lenght = $("rakuteMobileExplanationTextArea").length;
+  	var rakutenItemNameTextArea_Length = $("#rakutenItemNameTextArea").length;
+  	var rakutePCSellExplanationTextArea_Lenght = $("rakutePCSellExplanationTextArea").length;
+  	var rakutePCItemExplanationTextArea_Lenght = $("rakutePCItemExplanationTextArea").length;
+  	var rakuteSPExplanationTextArea_Lenght = $("rakuteSPExplanationTextArea").length;
+  	var rakuteMobileExplanationTextArea_Lenght = $("rakuteMobileExplanationTextArea").length;
   	
   	if(rakutenItemNameTextArea_Length > max_rakutenItemNameTextArea_length) {
   		$("#rakutenItemNameTextArea").css("border", "2px solid red");

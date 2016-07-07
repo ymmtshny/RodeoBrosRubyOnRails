@@ -16,7 +16,7 @@
             <% if array[i] != "" %>
                 <% row.push(array[i]) %>
             <% end %>
-            <% if i%10 == 9 %>
+            <% if i%10 == 0 %>
                 <% if row.length > 0 %>
                 <% @chart.push(row) %>
                 <% end %>
@@ -49,14 +49,14 @@
         <td><%= @brand.description %></td>
     </tr></table>
      <div id="left" class="arrows"><img src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/assets_20151105/img/item_left.png"></div>
-      <div class="itemImagesWrapper"><img id="mainImage" src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= @item.imgURLcommonPart %>-1.jpg?_ex=700x700" class="itemImages"></div>
+      <div class="itemImagesWrapper"><img id="mainImage" src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= @item.imgURLcommonPart %>-1.jpg?_ex=700x700" alt="<%= @item.name %>" class="itemImages"></div>
       <div id="right" class="arrows"><img src="http://www.rakuten.ne.jp/gold/auc-rodeo/items/assets_20151105/img/item_right.png"></div>
       <div class="thumbnailsWrapper">
         <ul id="tnlist">
           <% @image.each do |image| %>
                 <% description = image.description %>
                 <% description.gsub!('http://item.rakuten.co.jp/auc-rodeo/', 'http://store.shopping.yahoo.co.jp/rodeobros/') %><% description.gsub!('/"', '.html"') %>
-                <li><p class="textForImages text-center"><%= description %></p><img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=100x100" class="thumbImages"></li>
+                <li><p class="textForImages text-center"><%= description %></p><img src="http://thumbnail.image.rakuten.co.jp/@0_mall/auc-rodeo/cabinet/<%= image.imageURLCommonPart %>?_ex=100x100" alt="<%= @item.name %>" class="thumbImages"></li>
           <% end %>
         </ul>
       </div>
@@ -78,7 +78,7 @@
 <% end %>
 <%#####ここから同一#######%>
 <div id="shouhin">
-<h1><%= @item.name %></h1>
+<p><%= @item.name %></p>
 <p><%= @item.description %></p><br><br>
 </div>
 <div id="shouhin_main">
@@ -155,9 +155,9 @@
 <% @image.each do |image| %>
     <% if numberOfImage < 10 %><%#楽天画像に所属フォルダが存在する時#%>
         <% if image.imageURLCommonPart.split('/').length > 1 %>
-            <tr><td><img src="http://shopping.c.yimg.jp/lib/rodeobros/<%= image.imageURLCommonPart.split('/')[1] %>"><br><%= image.description %><br><br><br></td></tr>
+            <tr><td><img src="http://shopping.c.yimg.jp/lib/rodeobros/<%= image.imageURLCommonPart.split('/')[1] %>"  alt="<%= @item.name %>"><br><%= image.description %><br><br><br></td></tr>
         <% else %>
-            <tr><td><img src="http://shopping.c.yimg.jp/lib/rodeobros/<%= image.imageURLCommonPart %>"><br><%= image.description %><br><br><br></td></tr>
+            <tr><td><img src="http://shopping.c.yimg.jp/lib/rodeobros/<%= image.imageURLCommonPart %>" alt="<%= @item.name %>"><br><%= image.description %><br><br><br></td></tr>
         <% end %>
     <% end %>
     <% numberOfImage += 1 %>
@@ -167,7 +167,7 @@
 
 
 	<div id="shouhin">
-<h1><%= @item.name %></h1>
+<p><%= @item.name %></p>
 <p><%= @item.description %></p><br><br>
 </div>
 <div id="shouhin_main">
@@ -243,9 +243,9 @@
 <% @image.each do |image| %>
     <% if numberOfImage < 10 %><%#楽天画像に所属フォルダが存在する時#%>
         <% if image.imageURLCommonPart.split('/').length > 1 %>
-            <tr><td><img src="http://shopping.c.yimg.jp/lib/rodeobros/<%= image.imageURLCommonPart.split('/')[1] %>"><br><%= image.description %><br><br><br></td></tr>
+            <tr><td><img src="http://shopping.c.yimg.jp/lib/rodeobros/<%= image.imageURLCommonPart.split('/')[1] %>"  alt="<%= @item.name %>"><br><%= image.description %><br><br><br></td></tr>
         <% else %>
-            <tr><td><img src="http://shopping.c.yimg.jp/lib/rodeobros/<%= image.imageURLCommonPart %>"><br><%= image.description %><br><br><br></td></tr>
+            <tr><td><img src="http://shopping.c.yimg.jp/lib/rodeobros/<%= image.imageURLCommonPart %>" alt="<%= @item.name %>"><br><%= image.description %><br><br><br></td></tr>
         <% end %>
     <% end %>
     <% numberOfImage += 1 %>
